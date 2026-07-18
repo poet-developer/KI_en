@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Close Reading | 임화 <지상의 시></title>
+<title>Close Reading | Im Hwa Earthly Poetry</title>
 <link rel="stylesheet" href="../styles/styles.css">
 <link rel="stylesheet" href="../styles/emotion_tag.css">
 <link rel="stylesheet" href="../styles/header.css">
@@ -20,18 +20,18 @@
 </header>
 
 <h2>Close Reading</h2>
-<h3>가까이 읽기</h3>
+<h3>Explore individual poems and line-level emotions</h3>
 <div class="author-buttons">
-    <a href="close-kim-menu.html"><button class="author-btn">김소월</button></a>
-    <a href="close-yun-menu.html"><button class="author-btn">윤동주</button></a>
-    <a href="close-lee-menu.html"><button class="author-btn">이상</button></a>
-    <a href="close-lim-menu.html"><button class="author-btn active">임화</button></a>
-    <a href="close-han-menu.html"><button class="author-btn">한용운</button></a>
+    <a href="close-kim-menu.html"><button class="author-btn">Kim Sowol</button></a>
+    <a href="close-yun-menu.html"><button class="author-btn">Yun Dong-ju</button></a>
+    <a href="close-lee-menu.html"><button class="author-btn">Yi Sang</button></a>
+    <a href="close-lim-menu.html"><button class="author-btn active">Im Hwa</button></a>
+    <a href="close-han-menu.html"><button class="author-btn">Han Yong-un</button></a>
   </div>
 
 <div class="poem-frame">
   <div class="poem-frame">
-  <p class="poem-title">지상의 시</p>
+  <p class="poem-title">Earthly Poetry</p>
 
   <p class="poem-line" id="line_1">태초에 말이 있느니라……</p>
   <p class="poem-line" id="line_2">인간은 고약한 전통을 가진 동물이다.</p>
@@ -69,12 +69,12 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-header">
       <p id="modalTitle" class="modal-title">Line Detail</p>
-      <button class="modal-close" id="modalCloseBtn" aria-label="닫기">×</button>
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">×</button>
     </div>
     <div class="modal-body">
       <p id="modalLineText" class="clicked-line"></p>
       <div class = "tag_contatiner"></div>
-      <p class="hint">배경을 클릭하거나 ESC를 누르면 닫힙니다.</p>
+      <p class="hint">Click outside the dialog or press Esc to close.</p>
     </div>
   </div>
 </div>
@@ -84,8 +84,24 @@
   const modalLineText = document.getElementById("modalLineText");
   const closeBtn = document.getElementById("modalCloseBtn");
 
-  function openModal(text) {
-    modalLineText.textContent = `"${text}"`;
+  function openModal(line) {
+    const english = line.querySelector(".poem-line-en")?.textContent.trim() || line.textContent.trim();
+    const korean = line.querySelector(".poem-line-ko")?.textContent.trim() || "";
+    modalLineText.replaceChildren();
+
+    const englishLine = document.createElement("span");
+    englishLine.className = "modal-line-en";
+    englishLine.textContent = english;
+    modalLineText.appendChild(englishLine);
+
+    if (korean) {
+      const koreanLine = document.createElement("span");
+      koreanLine.className = "modal-line-ko";
+      koreanLine.lang = "ko";
+      koreanLine.textContent = korean;
+      modalLineText.appendChild(koreanLine);
+    }
+
     overlay.classList.add("open");
     overlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden"; // 스크롤 잠금
@@ -100,19 +116,19 @@
   // ✅ 각 poem-line 클릭 시 모달 열기
   document.querySelectorAll(".poem-line").forEach(line => {
     line.addEventListener("click", () => {
-      openModal(line.textContent.trim());
+      openModal(line);
     });
   });
 
-  // ✅ 닫기 버튼
+  // ✅ Close 버튼
   closeBtn.addEventListener("click", closeModal);
 
-  // ✅ 배경(오버레이) 클릭 시 닫기 (모달 박스 클릭은 제외)
+  // ✅ 배경(오버레이) 클릭 시 Close (모달 박스 클릭은 제외)
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closeModal();
   });
 
-  // ✅ ESC로 닫기
+  // ✅ ESC로 Close
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && overlay.classList.contains("open")) {
       closeModal();
@@ -121,187 +137,187 @@
 
   const emotionDummyData = {
   line_1: {
-  annotator_01: ["존경", "깨달음"],
-  annotator_02: ["감동/감탄", "깨달음", "비장함", "존경"],
-  annotator_03: ["깨달음", "놀람", "비장함", "존경"],
-  annotator_04: ["비장함", "깨달음"],
-  annotator_05: ["비장함"]
+  annotator_01: ["Respect", "Realization"],
+  annotator_02: ["Being moved / Admiration", "Realization", "Solemn resolve", "Respect"],
+  annotator_03: ["Realization", "Surprise", "Solemn resolve", "Respect"],
+  annotator_04: ["Solemn resolve", "Realization"],
+  annotator_05: ["Solemn resolve"]
 },
 
 line_2: {
-  annotator_01: ["증오/혐오", "지긋지긋", "힘듦/지침", "깨달음", "부담/안_내킴", "불쌍함/연민", "불평/불만", "서러움", "안타까움/실망"],
-  annotator_02: ["지긋지긋", "증오/혐오", "깨달음", "화남/분노"],
-  annotator_03: ["의심/불신", "증오/혐오"],
-  annotator_04: ["깨달음", "비장함", "절망", "증오/혐오", "화남/분노"],
-  annotator_05: ["깨달음", "의심/불신", "증오/혐오"]
+  annotator_01: ["Hatred / Aversion", "Weariness", "Exhaustion", "Realization", "Reluctance / Burden", "Pity / Compassion", "Complaint / Dissatisfaction", "Sorrow", "Regret / Disappointment"],
+  annotator_02: ["Weariness", "Hatred / Aversion", "Realization", "Anger / Rage"],
+  annotator_03: ["Doubt / Distrust", "Hatred / Aversion"],
+  annotator_04: ["Realization", "Solemn resolve", "Despair", "Hatred / Aversion", "Anger / Rage"],
+  annotator_05: ["Realization", "Doubt / Distrust", "Hatred / Aversion"]
 },
 
 line_3: {
-  annotator_01: ["우쭐댐/무시함", "의심/불신", "한심함", "부담/안_내킴", "어이없음"],
-  annotator_02: ["지긋지긋", "한심함", "불평/불만", "증오/혐오", "안타까움/실망", "어이없음"],
-  annotator_03: ["부담/안_내킴"],
-  annotator_04: ["불안/걱정", "부담/안_내킴", "슬픔"],
-  annotator_05: ["신기함/관심"]
+  annotator_01: ["Conceit / Disdain", "Doubt / Distrust", "Contempt", "Reluctance / Burden", "Disbelief"],
+  annotator_02: ["Weariness", "Contempt", "Complaint / Dissatisfaction", "Hatred / Aversion", "Regret / Disappointment", "Disbelief"],
+  annotator_03: ["Reluctance / Burden"],
+  annotator_04: ["Anxiety / Worry", "Reluctance / Burden", "Sadness"],
+  annotator_05: ["Wonder / Interest"]
 },
 
 line_4: {
-  annotator_01: ["의심/불신", "불평/불만", "부담/안_내킴", "지긋지긋"],
-  annotator_02: ["의심/불신", "지긋지긋", "부담/안_내킴", "불안/걱정"],
-  annotator_03: ["깨달음"],
-  annotator_04: ["재미없음", "힘듦/지침"],
-  annotator_05: ["없음"]
+  annotator_01: ["Doubt / Distrust", "Complaint / Dissatisfaction", "Reluctance / Burden", "Weariness"],
+  annotator_02: ["Doubt / Distrust", "Weariness", "Reluctance / Burden", "Anxiety / Worry"],
+  annotator_03: ["Realization"],
+  annotator_04: ["재미None", "Exhaustion"],
+  annotator_05: ["None"]
 },
 
 line_5: {
-  annotator_01: ["기대감", "신기함/관심", "놀람", "비장함", "깨달음"],
-  annotator_02: ["기대감", "깨달음", "놀람", "불안/걱정", "비장함", "신기함/관심"],
-  annotator_03: ["비장함", "불쌍함/연민"],
-  annotator_04: ["감동/감탄", "기쁨", "신기함/관심", "즐거움/신남"],
-  annotator_05: ["깨달음", "신기함/관심", "기대감"]
+  annotator_01: ["Anticipation", "Wonder / Interest", "Surprise", "Solemn resolve", "Realization"],
+  annotator_02: ["Anticipation", "Realization", "Surprise", "Anxiety / Worry", "Solemn resolve", "Wonder / Interest"],
+  annotator_03: ["Solemn resolve", "Pity / Compassion"],
+  annotator_04: ["Being moved / Admiration", "Joy", "Wonder / Interest", "Enjoyment / Excitement"],
+  annotator_05: ["Realization", "Wonder / Interest", "Anticipation"]
 },
 
 line_6: {
-  annotator_01: ["깨달음", "고마움", "즐거움/신남", "기쁨", "존경", "감동/감탄"],
-  annotator_02: ["깨달음", "놀람", "감동/감탄", "고마움", "기쁨", "행복", "즐거움/신남", "신기함/관심", "안심/신뢰", "존경"],
-  annotator_03: ["깨달음", "놀람"],
-  annotator_04: ["놀람", "당황/난처", "부담/안_내킴", "불안/걱정"],
-  annotator_05: ["깨달음"]
+  annotator_01: ["Realization", "Gratitude", "Enjoyment / Excitement", "Joy", "Respect", "Being moved / Admiration"],
+  annotator_02: ["Realization", "Surprise", "Being moved / Admiration", "Gratitude", "Joy", "Happiness", "Enjoyment / Excitement", "Wonder / Interest", "Relief / Trust", "Respect"],
+  annotator_03: ["Realization", "Surprise"],
+  annotator_04: ["Surprise", "Embarrassment / Awkwardness", "Reluctance / Burden", "Anxiety / Worry"],
+  annotator_05: ["Realization"]
 },
 
 line_7: {
-  annotator_01: ["안타까움/실망", "의심/불신", "불평/불만", "증오/혐오", "화남/분노", "부담/안_내킴"],
-  annotator_02: ["안타까움/실망", "한심함", "짜증", "어이없음", "불평/불만", "서러움", "의심/불신", "부담/안_내킴"],
-  annotator_03: ["불쌍함/연민", "불안/걱정", "비장함"],
-  annotator_04: ["절망", "화남/분노", "힘듦/지침"],
-  annotator_05: ["불안/걱정", "안타까움/실망"]
+  annotator_01: ["Regret / Disappointment", "Doubt / Distrust", "Complaint / Dissatisfaction", "Hatred / Aversion", "Anger / Rage", "Reluctance / Burden"],
+  annotator_02: ["Regret / Disappointment", "Contempt", "Irritation", "Disbelief", "Complaint / Dissatisfaction", "Sorrow", "Doubt / Distrust", "Reluctance / Burden"],
+  annotator_03: ["Pity / Compassion", "Anxiety / Worry", "Solemn resolve"],
+  annotator_04: ["Despair", "Anger / Rage", "Exhaustion"],
+  annotator_05: ["Anxiety / Worry", "Regret / Disappointment"]
 },
 
 line_8: {
-  annotator_01: ["비장함", "불안/걱정", "의심/불신", "패배/자기혐오", "공포/무서움", "절망"],
-  annotator_02: ["화남/분노", "공포/무서움", "부담/안_내킴", "증오/혐오", "절망"],
-  annotator_03: ["부담/안_내킴", "불쌍함/연민", "불평/불만", "안타까움/실망", "절망", "힘듦/지침"],
-  annotator_04: ["경악", "공포/무서움", "불안/걱정", "절망", "안타까움/실망"],
-  annotator_05: ["놀람", "경악", "감동/감탄"]
+  annotator_01: ["Solemn resolve", "Anxiety / Worry", "Doubt / Distrust", "Defeat / Self-loathing", "Fear", "Despair"],
+  annotator_02: ["Anger / Rage", "Fear", "Reluctance / Burden", "Hatred / Aversion", "Despair"],
+  annotator_03: ["Reluctance / Burden", "Pity / Compassion", "Complaint / Dissatisfaction", "Regret / Disappointment", "Despair", "Exhaustion"],
+  annotator_04: ["Shock", "Fear", "Anxiety / Worry", "Despair", "Regret / Disappointment"],
+  annotator_05: ["Surprise", "Shock", "Being moved / Admiration"]
 },
 
 line_9: {
-  annotator_01: ["한심함", "우쭐댐/무시함", "패배/자기혐오", "불안/걱정", "의심/불신", "불평/불만"],
-  annotator_02: ["지긋지긋", "한심함", "불평/불만", "의심/불신"],
-  annotator_03: ["부담/안_내킴", "안타까움/실망", "의심/불신"],
-  annotator_04: ["깨달음", "증오/혐오", "한심함", "어이없음"],
-  annotator_05: ["역겨움/징그러움", "증오/혐오", "지긋지긋"]
+  annotator_01: ["Contempt", "Conceit / Disdain", "Defeat / Self-loathing", "Anxiety / Worry", "Doubt / Distrust", "Complaint / Dissatisfaction"],
+  annotator_02: ["Weariness", "Contempt", "Complaint / Dissatisfaction", "Doubt / Distrust"],
+  annotator_03: ["Reluctance / Burden", "Regret / Disappointment", "Doubt / Distrust"],
+  annotator_04: ["Realization", "Hatred / Aversion", "Contempt", "Disbelief"],
+  annotator_05: ["Disgust / Revulsion", "Hatred / Aversion", "Weariness"]
 },
 
 line_10: {
-  annotator_01: ["불쌍함/연민", "안타까움/실망", "불안/걱정", "한심함", "신기함/관심"],
-  annotator_02: ["깨달음", "불쌍함/연민", "불평/불만", "슬픔", "안타까움/실망", "의심/불신", "비장함", "한심함"],
-  annotator_03: ["부담/안_내킴", "불평/불만", "의심/불신"],
-  annotator_04: ["놀람", "신기함/관심", "한심함", "불안/걱정"],
-  annotator_05: ["불평/불만", "역겨움/징그러움", "어이없음", "화남/분노"]
+  annotator_01: ["Pity / Compassion", "Regret / Disappointment", "Anxiety / Worry", "Contempt", "Wonder / Interest"],
+  annotator_02: ["Realization", "Pity / Compassion", "Complaint / Dissatisfaction", "Sadness", "Regret / Disappointment", "Doubt / Distrust", "Solemn resolve", "Contempt"],
+  annotator_03: ["Reluctance / Burden", "Complaint / Dissatisfaction", "Doubt / Distrust"],
+  annotator_04: ["Surprise", "Wonder / Interest", "Contempt", "Anxiety / Worry"],
+  annotator_05: ["Complaint / Dissatisfaction", "Disgust / Revulsion", "Disbelief", "Anger / Rage"]
 },
 
 line_11: {
-  annotator_01: ["불안/걱정", "불평/불만", "놀람", "당황/난처", "부담/안_내킴", "안타까움/실망", "어이없음", "의심/불신", "화남/분노"],
-  annotator_02: ["의심/불신", "경악", "기대감", "당황/난처", "놀람", "불안/걱정"],
-  annotator_03: ["불안/걱정", "의심/불신"],
-  annotator_04: ["경악", "부담/안_내킴", "당황/난처", "놀람", "슬픔", "죄책감"],
-  annotator_05: ["의심/불신"]
+  annotator_01: ["Anxiety / Worry", "Complaint / Dissatisfaction", "Surprise", "Embarrassment / Awkwardness", "Reluctance / Burden", "Regret / Disappointment", "Disbelief", "Doubt / Distrust", "Anger / Rage"],
+  annotator_02: ["Doubt / Distrust", "Shock", "Anticipation", "Embarrassment / Awkwardness", "Surprise", "Anxiety / Worry"],
+  annotator_03: ["Anxiety / Worry", "Doubt / Distrust"],
+  annotator_04: ["Shock", "Reluctance / Burden", "Embarrassment / Awkwardness", "Surprise", "Sadness", "Guilt"],
+  annotator_05: ["Doubt / Distrust"]
 },
 
 line_12: {
-  annotator_01: ["존경", "감동/감탄", "기대감", "아껴주는", "고마움"],
-  annotator_02: ["기대감", "비장함", "존경", "고마움", "아껴주는", "감동/감탄"],
-  annotator_03: ["감동/감탄", "기대감", "기쁨", "깨달음"],
-  annotator_04: ["감동/감탄", "기쁨", "깨달음", "비장함", "안심/신뢰"],
-  annotator_05: ["존경", "감동/감탄", "기대감"]
+  annotator_01: ["Respect", "Being moved / Admiration", "Anticipation", "Affection", "Gratitude"],
+  annotator_02: ["Anticipation", "Solemn resolve", "Respect", "Gratitude", "Affection", "Being moved / Admiration"],
+  annotator_03: ["Being moved / Admiration", "Anticipation", "Joy", "Realization"],
+  annotator_04: ["Being moved / Admiration", "Joy", "Realization", "Solemn resolve", "Relief / Trust"],
+  annotator_05: ["Respect", "Being moved / Admiration", "Anticipation"]
 },
 
 line_13: {
-  annotator_01: ["비장함", "감동/감탄", "존경", "고마움", "깨달음", "환영/호의"],
-  annotator_02: ["비장함", "존경", "깨달음", "감동/감탄", "고마움", "환영/호의", "놀람", "신기함/관심", "기쁨"],
-  annotator_03: ["깨달음", "비장함"],
-  annotator_04: ["절망", "힘듦/지침", "재미없음"],
-  annotator_05: ["깨달음"]
+  annotator_01: ["Solemn resolve", "Being moved / Admiration", "Respect", "Gratitude", "Realization", "Welcome / Favor"],
+  annotator_02: ["Solemn resolve", "Respect", "Realization", "Being moved / Admiration", "Gratitude", "Welcome / Favor", "Surprise", "Wonder / Interest", "Joy"],
+  annotator_03: ["Realization", "Solemn resolve"],
+  annotator_04: ["Despair", "Exhaustion", "재미None"],
+  annotator_05: ["Realization"]
 },
 
 line_14: {
-  annotator_01: ["깨달음", "비장함", "안타까움/실망", "불평/불만"],
-  annotator_02: ["깨달음", "비장함", "뿌듯함"],
-  annotator_03: ["깨달음", "비장함"],
-  annotator_04: ["깨달음", "비장함", "슬픔"],
-  annotator_05: ["깨달음", "패배/자기혐오", "재미없음"]
+  annotator_01: ["Realization", "Solemn resolve", "Regret / Disappointment", "Complaint / Dissatisfaction"],
+  annotator_02: ["Realization", "Solemn resolve", "Pride"],
+  annotator_03: ["Realization", "Solemn resolve"],
+  annotator_04: ["Realization", "Solemn resolve", "Sadness"],
+  annotator_05: ["Realization", "Defeat / Self-loathing", "재미None"]
 },
 
 line_15: {
-  annotator_01: ["고마움", "안심/신뢰", "비장함", "서러움", "깨달음"],
-  annotator_02: ["고마움", "뿌듯함", "아껴주는", "안심/신뢰", "행복", "흐뭇함(귀여움/예쁨)"],
-  annotator_03: ["깨달음", "비장함"],
-  annotator_04: ["감동/감탄", "비장함", "깨달음", "기대감", "뿌듯함"],
-  annotator_05: ["신기함/관심", "감동/감탄", "존경"]
+  annotator_01: ["Gratitude", "Relief / Trust", "Solemn resolve", "Sorrow", "Realization"],
+  annotator_02: ["Gratitude", "Pride", "Affection", "Relief / Trust", "Happiness", "Delight (Cuteness / Beauty)"],
+  annotator_03: ["Realization", "Solemn resolve"],
+  annotator_04: ["Being moved / Admiration", "Solemn resolve", "Realization", "Anticipation", "Pride"],
+  annotator_05: ["Wonder / Interest", "Being moved / Admiration", "Respect"]
 },
 
 line_16: {
-  annotator_01: ["우쭐댐/무시함", "감동/감탄", "기대감", "깨달음"],
-  annotator_02: ["깨달음", "뿌듯함", "우쭐댐/무시함", "한심함"],
-  annotator_03: ["우쭐댐/무시함", "의심/불신", "증오/혐오"],
-  annotator_04: ["비장함", "존경", "행복", "힘듦/지침"],
-  annotator_05: ["깨달음"]
+  annotator_01: ["Conceit / Disdain", "Being moved / Admiration", "Anticipation", "Realization"],
+  annotator_02: ["Realization", "Pride", "Conceit / Disdain", "Contempt"],
+  annotator_03: ["Conceit / Disdain", "Doubt / Distrust", "Hatred / Aversion"],
+  annotator_04: ["Solemn resolve", "Respect", "Happiness", "Exhaustion"],
+  annotator_05: ["Realization"]
 },
 
 line_17: {
-  annotator_01: ["비장함", "없음"],
-  annotator_02: ["기대감", "비장함"],
-  annotator_03: ["없음"],
-  annotator_04: ["기대감", "비장함"],
-  annotator_05: ["비장함", "안심/신뢰"]
+  annotator_01: ["Solemn resolve", "None"],
+  annotator_02: ["Anticipation", "Solemn resolve"],
+  annotator_03: ["None"],
+  annotator_04: ["Anticipation", "Solemn resolve"],
+  annotator_05: ["Solemn resolve", "Relief / Trust"]
 },
 
 line_18: {
-  annotator_01: ["의심/불신"],
-  annotator_02: ["깨달음", "고마움", "의심/불신"],
-  annotator_03: ["없음"],
-  annotator_04: ["비장함"],
-  annotator_05: ["신기함/관심"]
+  annotator_01: ["Doubt / Distrust"],
+  annotator_02: ["Realization", "Gratitude", "Doubt / Distrust"],
+  annotator_03: ["None"],
+  annotator_04: ["Solemn resolve"],
+  annotator_05: ["Wonder / Interest"]
 },
 
 line_19: {
-  annotator_01: ["깨달음", "비장함", "존경", "기대감", "안심/신뢰"],
-  annotator_02: ["감동/감탄", "신기함/관심", "즐거움/신남", "편안/쾌적", "환영/호의"],
-  annotator_03: ["없음"],
-  annotator_04: ["감동/감탄", "신기함/관심", "뿌듯함"],
-  annotator_05: ["기대감"]
+  annotator_01: ["Realization", "Solemn resolve", "Respect", "Anticipation", "Relief / Trust"],
+  annotator_02: ["Being moved / Admiration", "Wonder / Interest", "Enjoyment / Excitement", "Comfort / Ease", "Welcome / Favor"],
+  annotator_03: ["None"],
+  annotator_04: ["Being moved / Admiration", "Wonder / Interest", "Pride"],
+  annotator_05: ["Anticipation"]
 },
 
 line_20: {
-  annotator_01: ["깨달음", "존경", "감동/감탄", "비장함", "아껴주는"],
-  annotator_02: ["깨달음", "기쁨", "존경", "환영/호의", "감동/감탄"],
-  annotator_03: ["감동/감탄", "기대감", "기쁨", "아껴주는"],
-  annotator_04: ["감동/감탄", "깨달음", "신기함/관심"],
-  annotator_05: ["깨달음", "존경"]
+  annotator_01: ["Realization", "Respect", "Being moved / Admiration", "Solemn resolve", "Affection"],
+  annotator_02: ["Realization", "Joy", "Respect", "Welcome / Favor", "Being moved / Admiration"],
+  annotator_03: ["Being moved / Admiration", "Anticipation", "Joy", "Affection"],
+  annotator_04: ["Being moved / Admiration", "Realization", "Wonder / Interest"],
+  annotator_05: ["Realization", "Respect"]
 },
 
 line_21: {
-  annotator_01: ["비장함", "없음", "깨달음"],
-  annotator_02: ["비장함", "기대감", "불안/걱정", "서러움", "슬픔", "안심/신뢰"],
-  annotator_03: ["없음"],
-  annotator_04: ["없음"],
-  annotator_05: ["없음"]
+  annotator_01: ["Solemn resolve", "None", "Realization"],
+  annotator_02: ["Solemn resolve", "Anticipation", "Anxiety / Worry", "Sorrow", "Sadness", "Relief / Trust"],
+  annotator_03: ["None"],
+  annotator_04: ["None"],
+  annotator_05: ["None"]
 },
 
 line_22: {
-  annotator_01: ["깨달음", "기대감", "뿌듯함", "비장함", "우쭐댐/무시함"],
-  annotator_02: ["기쁨", "깨달음", "뿌듯함", "우쭐댐/무시함", "즐거움/신남", "의심/불신"],
-  annotator_03: ["불평/불만", "우쭐댐/무시함"],
-  annotator_04: ["비장함", "슬픔", "힘듦/지침", "안타까움/실망"],
-  annotator_05: ["부담/안_내킴", "불안/걱정", "불평/불만", "안타까움/실망"]
+  annotator_01: ["Realization", "Anticipation", "Pride", "Solemn resolve", "Conceit / Disdain"],
+  annotator_02: ["Joy", "Realization", "Pride", "Conceit / Disdain", "Enjoyment / Excitement", "Doubt / Distrust"],
+  annotator_03: ["Complaint / Dissatisfaction", "Conceit / Disdain"],
+  annotator_04: ["Solemn resolve", "Sadness", "Exhaustion", "Regret / Disappointment"],
+  annotator_05: ["Reluctance / Burden", "Anxiety / Worry", "Complaint / Dissatisfaction", "Regret / Disappointment"]
 },
 
 line_23: {
-  annotator_01: ["깨달음", "고마움", "신기함/관심", "비장함", "안심/신뢰"],
-  annotator_02: ["깨달음", "비장함", "존경"],
-  annotator_03: ["깨달음", "비장함"],
-  annotator_04: ["비장함", "힘듦/지침", "슬픔"],
-  annotator_05: ["신기함/관심", "의심/불신", "기대감"]
+  annotator_01: ["Realization", "Gratitude", "Wonder / Interest", "Solemn resolve", "Relief / Trust"],
+  annotator_02: ["Realization", "Solemn resolve", "Respect"],
+  annotator_03: ["Realization", "Solemn resolve"],
+  annotator_04: ["Solemn resolve", "Exhaustion", "Sadness"],
+  annotator_05: ["Wonder / Interest", "Doubt / Distrust", "Anticipation"]
 }
 };
   // ✅ 모달에 태그 추가
@@ -331,7 +347,7 @@ line_23: {
         tagContainer.appendChild(annotatorDiv);
       }
     } else {
-      tagContainer.textContent = "태그 정보가 없습니다.";
+      tagContainer.textContent = "No emotion-tag data is available.";
     }
   }
 
@@ -344,5 +360,6 @@ line_23: {
 
 </script>
 
+<script src="../js/bilingual-poems.js"></script>
 </body>
 </html>

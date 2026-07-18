@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Co-Reading Web Prototype</title>
@@ -22,27 +22,27 @@
 <div class="window-container">
 <div>
 <h2>Co-Reading</h2>
-<h3>함께 읽기</h3>
+<h3>Read Together</h3>
 </div>
     <div class="window-body">
-      <label for="poemSelect">시 선택</label>
+      <label for="poemSelect">Select a Poem</label>
 <select id="poemSelect" class="select-box">
-  <option value="">선택해 주세요</option>
-  <option value="김소월01">김소월 - 진달래꽃</option>
-  <option value="윤동주01">윤동주 - 서시</option>
-  <option value="이상01">이상 - 꽃나무</option>
-  <option value="임화01">임화 - 현해탄 (일부 발췌) </option>
-  <option value="한용운01">한용운 - 나룻배와 행인</option>
-  <option value="신석정01">신석정 - 네 눈망울에서는</option>
-  <option value="백석01">백석 - 나와 나타샤와 흰 당나귀 (일부 발췌)</option>
-  <option value="김수영01">김수영 - 푸른 하늘을</option>
+  <option value="">Choose a poem</option>
+  <option value="김소월01">Kim Sowol — Azaleas</option>
+  <option value="윤동주01">Yun Dong-ju — Prologue</option>
+  <option value="이상01">Yi Sang — Flowering Tree</option>
+  <option value="임화01">Im Hwa — The Korea Strait (excerpt)</option>
+  <option value="한용운01">Han Yong-un — The Ferryboat and the Traveler</option>
+  <option value="신석정01">Shin Seok-jeong — In Your Eyes</option>
+  <option value="백석01">Baek Seok — Me, Natasha, and the White Donkey (excerpt)</option>
+  <option value="김수영01">Kim Su-young — The Blue Sky</option>
 </select>
 
-<label for="userText">시 전문</label>
-<textarea id="userText" readonly placeholder="시를 선택하면 전문이 표시됩니다."></textarea>
+<label for="userText">Poem Text</label>
+<textarea id="userText" readonly placeholder="Select a poem to display its full text."></textarea>
         <div class="button-row">
-  <button id="analyzeButton">함께 읽기</button>
-  <button id="analyzeResetButton">지우기</button>
+  <button id="analyzeButton">Read Together</button>
+  <button id="analyzeResetButton">Clear</button>
 </div>
       <div class="revealing-row">
         <span class="revealing-value" id="revealingValue">-</span>
@@ -76,4 +76,3 @@
 </div>
 
   <script src="../js/app.js"></script>
-

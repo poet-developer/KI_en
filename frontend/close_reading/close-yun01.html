@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Close Reading | 윤동주 <서시></title>
+<title>Close Reading | Yun Dong-ju Prologue</title>
 <link rel="stylesheet" href="../styles/styles.css">
 <link rel="stylesheet" href="../styles/emotion_tag.css">
 <link rel="stylesheet" href="../styles/header.css">
@@ -20,16 +20,16 @@
 </header>
 
 <h2>Close Reading</h2>
-<h3>가까이 읽기</h3>
+<h3>Explore individual poems and line-level emotions</h3>
 <div class="author-buttons">
-    <a href="close-kim-menu.html"><button class="author-btn">김소월</button></a>
-    <a href="close-yun-menu.html"><button class="author-btn active">윤동주</button></a>
-    <a href="close-lee-menu.html"><button class="author-btn">이상</button></a>
-    <a href="close-lim-menu.html"><button class="author-btn">임화</button></a>
-    <a href="close-han-menu.html"><button class="author-btn">한용운</button></a>
+    <a href="close-kim-menu.html"><button class="author-btn">Kim Sowol</button></a>
+    <a href="close-yun-menu.html"><button class="author-btn active">Yun Dong-ju</button></a>
+    <a href="close-lee-menu.html"><button class="author-btn">Yi Sang</button></a>
+    <a href="close-lim-menu.html"><button class="author-btn">Im Hwa</button></a>
+    <a href="close-han-menu.html"><button class="author-btn">Han Yong-un</button></a>
   </div>
 <div class="poem-frame">
-  <p class="poem-title">서시</p>
+  <p class="poem-title">Prologue</p>
 
   <p class="poem-line" id="line_1">죽는 날까지 하늘을 우러러</p>
   <p class="poem-line" id="line_2">한 점 부끄럼이 없기를,</p>
@@ -49,12 +49,12 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-header">
       <p id="modalTitle" class="modal-title">Line Detail</p>
-      <button class="modal-close" id="modalCloseBtn" aria-label="닫기">×</button>
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">×</button>
     </div>
     <div class="modal-body">
       <p id="modalLineText" class="clicked-line"></p>
       <div class = "tag_contatiner"></div>
-      <p class="hint">배경을 클릭하거나 ESC를 누르면 닫힙니다.</p>
+      <p class="hint">Click outside the dialog or press Esc to close.</p>
     </div>
   </div>
 </div>
@@ -64,8 +64,24 @@
   const modalLineText = document.getElementById("modalLineText");
   const closeBtn = document.getElementById("modalCloseBtn");
 
-  function openModal(text) {
-    modalLineText.textContent = `"${text}"`;
+  function openModal(line) {
+    const english = line.querySelector(".poem-line-en")?.textContent.trim() || line.textContent.trim();
+    const korean = line.querySelector(".poem-line-ko")?.textContent.trim() || "";
+    modalLineText.replaceChildren();
+
+    const englishLine = document.createElement("span");
+    englishLine.className = "modal-line-en";
+    englishLine.textContent = english;
+    modalLineText.appendChild(englishLine);
+
+    if (korean) {
+      const koreanLine = document.createElement("span");
+      koreanLine.className = "modal-line-ko";
+      koreanLine.lang = "ko";
+      koreanLine.textContent = korean;
+      modalLineText.appendChild(koreanLine);
+    }
+
     overlay.classList.add("open");
     overlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden"; // 스크롤 잠금
@@ -80,19 +96,19 @@
   // ✅ 각 poem-line 클릭 시 모달 열기
   document.querySelectorAll(".poem-line").forEach(line => {
     line.addEventListener("click", () => {
-      openModal(line.textContent.trim());
+      openModal(line);
     });
   });
 
-  // ✅ 닫기 버튼
+  // ✅ Close 버튼
   closeBtn.addEventListener("click", closeModal);
 
-  // ✅ 배경(오버레이) 클릭 시 닫기 (모달 박스 클릭은 제외)
+  // ✅ 배경(오버레이) 클릭 시 Close (모달 박스 클릭은 제외)
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closeModal();
   });
 
-  // ✅ ESC로 닫기
+  // ✅ ESC로 Close
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && overlay.classList.contains("open")) {
       closeModal();
@@ -101,67 +117,67 @@
 
   const emotionDummyData = {
   line_1: {
-    annotator_01: ["비장함"],
-    annotator_02: ["비장함"],
-    annotator_03: ["뿌듯함", "비장함"],
-    annotator_04: ["비장함", "뿌듯함", "감동/감탄"],
-    annotator_05: ["비장함", "서러움", "슬픔"]
+    annotator_01: ["Solemn resolve"],
+    annotator_02: ["Solemn resolve"],
+    annotator_03: ["Pride", "Solemn resolve"],
+    annotator_04: ["Solemn resolve", "Pride", "Being moved / Admiration"],
+    annotator_05: ["Solemn resolve", "Sorrow", "Sadness"]
   },
   line_2: {
-    annotator_01: ["부끄러움", "비장함"],
-    annotator_02: ["부끄러움", "비장함", "기대감", "불안/걱정", "서러움", "슬픔"],
-    annotator_03: ["깨달음", "비장함", "뿌듯함"],
-    annotator_04: ["비장함", "부끄러움", "기대감"],
-    annotator_05: ["비장함"]
+    annotator_01: ["Shame", "Solemn resolve"],
+    annotator_02: ["Shame", "Solemn resolve", "Anticipation", "Anxiety / Worry", "Sorrow", "Sadness"],
+    annotator_03: ["Realization", "Solemn resolve", "Pride"],
+    annotator_04: ["Solemn resolve", "Shame", "Anticipation"],
+    annotator_05: ["Solemn resolve"]
   },
   line_3: {
-    annotator_01: ["기대감", "신기함/관심"],
-    annotator_02: ["기대감", "불안/걱정", "비장함"],
-    annotator_03: ["슬픔", "서러움", "불안/걱정", "당황/난처"],
-    annotator_04: ["비장함", "슬픔"],
-    annotator_05: ["감동/감탄", "신기함/관심", "편안/쾌적", "기대감"]
+    annotator_01: ["Anticipation", "Wonder / Interest"],
+    annotator_02: ["Anticipation", "Anxiety / Worry", "Solemn resolve"],
+    annotator_03: ["Sadness", "Sorrow", "Anxiety / Worry", "Embarrassment / Awkwardness"],
+    annotator_04: ["Solemn resolve", "Sadness"],
+    annotator_05: ["Being moved / Admiration", "Wonder / Interest", "Comfort / Ease", "Anticipation"]
   },
   line_4: {
-    annotator_01: ["절망", "슬픔", "패배/자기혐오"],
-    annotator_02: ["절망", "슬픔", "패배/자기혐오", "죄책감", "힘듦/지침", "비장함"],
-    annotator_03: ["당황/난처", "서러움", "죄책감", "패배/자기혐오"],
-    annotator_04: ["비장함", "슬픔", "패배/자기혐오", "절망", "힘듦/지침"],
-    annotator_05: ["슬픔", "서러움", "절망", "힘듦/지침", "패배/자기혐오"]
+    annotator_01: ["Despair", "Sadness", "Defeat / Self-loathing"],
+    annotator_02: ["Despair", "Sadness", "Defeat / Self-loathing", "Guilt", "Exhaustion", "Solemn resolve"],
+    annotator_03: ["Embarrassment / Awkwardness", "Sorrow", "Guilt", "Defeat / Self-loathing"],
+    annotator_04: ["Solemn resolve", "Sadness", "Defeat / Self-loathing", "Despair", "Exhaustion"],
+    annotator_05: ["Sadness", "Sorrow", "Despair", "Exhaustion", "Defeat / Self-loathing"]
   },
   line_5: {
-    annotator_01: ["기쁨", "신기함/관심", "즐거움/신남", "흐뭇함(귀여움/예쁨)", "뿌듯함"],
-    annotator_02: ["기쁨", "뿌듯함", "감동/감탄", "슬픔", "비장함", "아껴주는", "환영/호의", "기대감"],
-    annotator_03: ["고마움", "기대감", "기쁨", "아껴주는", "흐뭇함(귀여움/예쁨)"],
-    annotator_04: ["감동/감탄", "기대감", "기쁨", "아껴주는", "행복"],
-    annotator_05: ["즐거움/신남", "기대감", "기쁨", "행복"]
+    annotator_01: ["Joy", "Wonder / Interest", "Enjoyment / Excitement", "Delight (Cuteness / Beauty)", "Pride"],
+    annotator_02: ["Joy", "Pride", "Being moved / Admiration", "Sadness", "Solemn resolve", "Affection", "Welcome / Favor", "Anticipation"],
+    annotator_03: ["Gratitude", "Anticipation", "Joy", "Affection", "Delight (Cuteness / Beauty)"],
+    annotator_04: ["Being moved / Admiration", "Anticipation", "Joy", "Affection", "Happiness"],
+    annotator_05: ["Enjoyment / Excitement", "Anticipation", "Joy", "Happiness"]
   },
   line_6: {
-    annotator_01: ["비장함", "불쌍함/연민", "아껴주는", "기쁨"],
-    annotator_02: ["비장함", "불쌍함/연민", "아껴주는", "슬픔", "환영/호의", "기대감", "안심/신뢰"],
-    annotator_03: ["불쌍함/연민", "비장함", "아껴주는", "존경"],
-    annotator_04: ["비장함", "슬픔"],
-    annotator_05: ["불쌍함/연민", "비장함"]
+    annotator_01: ["Solemn resolve", "Pity / Compassion", "Affection", "Joy"],
+    annotator_02: ["Solemn resolve", "Pity / Compassion", "Affection", "Sadness", "Welcome / Favor", "Anticipation", "Relief / Trust"],
+    annotator_03: ["Pity / Compassion", "Solemn resolve", "Affection", "Respect"],
+    annotator_04: ["Solemn resolve", "Sadness"],
+    annotator_05: ["Pity / Compassion", "Solemn resolve"]
   },
   line_7: {
-    annotator_01: ["없음"],
-    annotator_02: ["없음"],
-    annotator_03: ["부담/안_내킴", "신기함/관심", "힘듦/지침"],
-    annotator_04: ["비장함", "기쁨"],
-    annotator_05: ["비장함", "깨달음"]
+    annotator_01: ["None"],
+    annotator_02: ["None"],
+    annotator_03: ["Reluctance / Burden", "Wonder / Interest", "Exhaustion"],
+    annotator_04: ["Solemn resolve", "Joy"],
+    annotator_05: ["Solemn resolve", "Realization"]
   },
   line_8: {
-    annotator_01: ["비장함", "깨달음"],
-    annotator_02: ["비장함", "깨달음"],
-    annotator_03: ["없음"],
-    annotator_04: ["기대감", "비장함"],
-    annotator_05: ["기대감", "비장함"]
+    annotator_01: ["Solemn resolve", "Realization"],
+    annotator_02: ["Solemn resolve", "Realization"],
+    annotator_03: ["None"],
+    annotator_04: ["Anticipation", "Solemn resolve"],
+    annotator_05: ["Anticipation", "Solemn resolve"]
   },
   line_9: {
-    annotator_01: ["흐뭇함(귀여움/예쁨)", "기대감", "편안/쾌적"],
-    annotator_02: ["감동/감탄", "서러움", "슬픔", "아껴주는", "흐뭇함(귀여움/예쁨)"],
-    annotator_03: ["슬픔", "서러움", "불안/걱정"],
-    annotator_04: ["감동/감탄", "기대감", "기쁨", "신기함/관심", "아껴주는"],
-    annotator_05: ["감동/감탄", "기대감", "깨달음", "놀람", "신기함/관심"]
+    annotator_01: ["Delight (Cuteness / Beauty)", "Anticipation", "Comfort / Ease"],
+    annotator_02: ["Being moved / Admiration", "Sorrow", "Sadness", "Affection", "Delight (Cuteness / Beauty)"],
+    annotator_03: ["Sadness", "Sorrow", "Anxiety / Worry"],
+    annotator_04: ["Being moved / Admiration", "Anticipation", "Joy", "Wonder / Interest", "Affection"],
+    annotator_05: ["Being moved / Admiration", "Anticipation", "Realization", "Surprise", "Wonder / Interest"]
   },
 };
   // ✅ 모달에 태그 추가
@@ -191,7 +207,7 @@
         tagContainer.appendChild(annotatorDiv);
       }
     } else {
-      tagContainer.textContent = "태그 정보가 없습니다.";
+      tagContainer.textContent = "No emotion-tag data is available.";
     }
   }
 
@@ -204,5 +220,6 @@
 
 </script>
 
+<script src="../js/bilingual-poems.js"></script>
 </body>
 </html>

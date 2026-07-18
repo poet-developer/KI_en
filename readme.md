@@ -1,123 +1,133 @@
 # KPoEM Interface
 
-KPoEM Interface는 한국 근현대시를 대상으로 구축된 KPoEM(Korean Poetry Emotion Dataset) 데이터셋과 감정 분류 모델을 활용하여 시 텍스트를 시각적으로 탐색할 수 있도록 설계된 웹 기반 인터페이스이다.
+KPoEM Interface is a web-based environment designed for the visual exploration of Korean poetic texts. It uses the **KPoEM (Korean Poetry Emotion Dataset)** and its associated emotion-classification model to present emotion analysis through multiple forms of visualization.
 
-본 프로젝트는 시의 감정을 분석하고 이를 다양한 시각화 방식으로 제공함으로써, 사용자가 문학 작품을 여러 관점에서 탐색할 수 있도록 구성되었다. 인터페이스는 크게 가까이 읽기(Close Reading), 멀리서 읽기(Distant Reading), 함께 읽기(Co-Reading)의 세 가지 모듈로 이루어진다.
+By combining computational emotion analysis with visual representation, the project allows readers to explore literary works from several perspectives. The interface consists of three primary modules: **Close Reading**, **Distant Reading**, and **Co-Reading**.
 
-* **Close Reading**은 개별 시 작품을 중심으로 감정 분석 결과를 탐색하는 기능이다.
-* **Distant Reading**은 시인 및 작품 전체의 감정 분포와 패턴을 시각적으로 확인하는 기능이다.
-* **Co-Reading(Lim, 2026 Forthcoming)**은 인간과 인공지능이 함께 문학 작품을 읽고 해석하는 실험적 읽기 환경으로, 감정 분석 결과를 색채와 시각적 요소로 변환하여 제시한다.
+- **Close Reading** supports the exploration of emotion-analysis results in individual poems and their lines.
+- **Distant Reading** visualizes emotional distributions and patterns across poets and their collected works.
+- **Co-Reading (Lim, 2026, forthcoming)** is an experimental environment in which humans and artificial intelligence read and interpret literary works together. It translates emotion-analysis results into colors and other visual elements.
 
-  For more information and source code, visit the project repository: 
-  🔗 https://github.com/poet-developer/Co-Reading
+For more information about Co-Reading and its source code, visit the [Co-Reading repository](https://github.com/poet-developer/Co-Reading).
 
-단, 본 인터페이스는 학위논문의 논증과 개념 검증을 목적으로 개발된 정적(static) 웹 프로토타입으로, 실제 서비스 환경이나 사용자 상호작용을 전제로 한 시스템은 아니다. 따라서 현재 버전은 연구에서 제안하는 읽기 방식과 시각화 방법론의 가능성을 시연하기 위한 프로토타입 형태로 구성되어 있다.
-
+> **Note**
+>
+> KPoEM Interface is a static web prototype developed to support the arguments and conceptual validation of a doctoral dissertation. It is not intended as a production service or as a fully implemented user-interaction system. The current version demonstrates the potential of the reading methods and visualization methodology proposed by the research.
 
 ## Project Structure
 
-### backend
+### `backend/`
 
-감정 분석과 시각화 결과를 생성하는 코드가 포함되어 있습니다.
+Contains the code used to perform emotion analysis and generate visualization outputs.
 
 - `shap/`
-  - SHAP 기반 중요 단어 분석 결과 저장
+  - Stores SHAP-based analyses of influential words.
 - `KPoEM_heatmap.ipynb`
-  - 감정 히트맵 생성
+  - Generates emotion heatmaps.
 - `KPoEM_wordcloud.ipynb`
-  - 워드클라우드 생성
+  - Generates emotion-based word clouds.
 - `poet_emotion_distribution.ipynb`
-  - 시인별 감정 분포 분석
+  - Analyzes emotion distributions by poet.
 - `poet_SHAP_batched_run.ipynb`
-  - SHAP 분석 수행
+  - Performs batched SHAP analysis.
 
-### frontend
+### `frontend/`
 
-사용자가 실제로 감정 분석 결과를 확인할 수 있는 웹 인터페이스입니다.
+Contains the web interface through which users explore the emotion-analysis results.
 
 - `close_reading/`
-  - 개별 시를 중심으로 감정을 탐색하는 화면
+  - Provides bilingual, line-level exploration of individual poems and their emotion annotations.
 - `distant_reading/`
-  - 시인 전체의 감정 경향을 확인하는 화면
+  - Presents broader emotional tendencies across a poet's works.
 - `co_reading/`
-  -인간과 인공지능이 함께 시를 읽는 Co-Reading 인터페이스 사용자가 시를 선택하면 작품 전문이 표시됨 감정 분석 결과를 기반으로 감정–색채 시각화를 제공. 감정 정보를 색상 그라데이션과 범례 형태로 표현하여 새로운 시 읽기 경험을 제공.
-  
+  - Provides the Co-Reading interface for reading poetry with AI.
+  - Displays a selected poem in full.
+  - Translates emotion-analysis results into color gradients and visual legends.
 - `source/`
-  - 시인별 distant analysis HTML 결과 파일 저장
+  - Stores generated HTML files used for distant-reading visualizations.
 - `styles/`
-  - CSS 스타일 파일
+  - Contains the CSS stylesheets for the interface.
 - `js/`
-  - 인터페이스 동작을 위한 JavaScript 파일
+  - Contains JavaScript for interface behavior and interaction.
 - `img/`
-  - 워드클라우드 이미지 파일 저장
+  - Stores generated word-cloud images.
 
-## 주요 기능
+## Features
 
-* **Close Reading**
+### Close Reading
 
-  * 개별 시 작품의 감정 분석 결과 탐색
-  * 행 단위 감정 정보 및 주요 감정 확인
+- Explore emotion-analysis results for individual poems.
+- Inspect line-level emotion annotations and primary emotions.
+- Read English translations alongside the original Korean text.
 
-* **Distant Reading**
+### Distant Reading
 
-  * 시인별·작품별 감정 분포 시각화
-  * 감정 히트맵을 통한 감정 패턴 탐색
+- Visualize emotion distributions by poet and literary work.
+- Explore emotional patterns through emotion heatmaps.
+- Examine emotion-related vocabulary using SHAP word clouds.
 
-* **Co-Reading**
+### Co-Reading
 
-  * 인간과 인공지능이 함께 시를 읽는 인터페이스 제공
-  * 감정 분석 결과를 색채 시각화로 표현
-  * 문학적 해석과 AI 분석 결과를 동시에 탐색 가능
+- Read literary works through a collaborative human–AI interface.
+- Transform emotion-analysis results into color visualizations.
+- Explore literary interpretation and AI-generated analysis together.
 
-* **Emotion Visualization**
+### Emotion Visualization
 
-  * 감정 히트맵(Heatmap) 제공
-  * 감정 분포 시각화
-  * 감정–색채 매핑(Color Mapping)
+- Emotion heatmaps
+- Emotion-distribution visualizations
+- Emotion–color mapping
+- Color gradients and visual legends
 
-* **Explainable AI**
+### Explainable AI
 
-  * SHAP 기반 핵심 단어 분석
-  * 워드클라우드를 통한 감정 특징어 시각화
+- SHAP-based analysis of influential words
+- Word-cloud visualizations of emotion-related vocabulary
 
-* **Interactive Exploration**
+### Interactive Exploration
 
-  * 시인, 작품, 감정 정보를 웹 기반 환경에서 탐색
-  * 다양한 읽기 방식을 결합한 디지털 인문학 인터페이스 제공
+- Web-based exploration of poets, literary works, and emotions
+- Integration of multiple reading methods within a digital-humanities environment
 
+## Featured Poets
 
-## 대상 시인
+- Han Yong-un (한용운)
+- Kim Sowol (김소월)
+- Yi Sang (이상)
+- Im Hwa (임화)
+- Yun Dong-ju (윤동주)
 
-- 한용운
-- 김소월
-- 이상
-- 임화
-- 윤동주
+## Objective
 
-## 목적
+KPoEM Interface aims to provide a digital-humanities research environment for reading and exploring modern Korean poetry in new ways through emotion datasets and artificial-intelligence analysis.
 
-KPoEM Interface는 감정 데이터셋과 인공지능 분석 결과를 활용하여 한국 근현대시를 새로운 방식으로 읽고 탐색할 수 있는 디지털 인문학 연구 환경을 제공하는 것을 목표로 합니다.
-
-## Resource
+## Resources
 
 ### 📖 KPoEM Dataset
-- IRO LIM · Ji Haein · Koo Sul · Jung Song-yi · Yun Jonghoon · Byungjun Kim
-- Repository: [Zenodo](https://zenodo.org/records/15598092), [HuggingFace](https://huggingface.co/datasets/AKS-DHLAB/KPoEM)
+
+**Contributors:** IRO LIM · Ji Haein · Koo Sul · Jung Song-yi · Yun Jonghoon · Byungjun Kim
+
+- [Zenodo](https://zenodo.org/records/15598092)
+- [Hugging Face](https://huggingface.co/datasets/AKS-DHLAB/KPoEM)
 
 ### 🤖 KPoEM Emotion Classification Model
-- IRO LIM · Ji Haein · Byungjun Kim
-- Repository: [HuggingFace](https://huggingface.co/AKS-DHLAB/KPoEM)
 
-> ⬇️ 본 데이터셋과 감정 분류 모델은 공동연구를 통해 개발되었으며, 상세 내용은 아래 관련 논문을 참고하기 바란다.
+**Contributors:** IRO LIM · Ji Haein · Byungjun Kim
+
+- [Hugging Face](https://huggingface.co/AKS-DHLAB/KPoEM)
+
+> The KPoEM dataset and emotion-classification model were developed through collaborative research. For further details, see the following publication:
 >
-> Lim, I., Ji, H., & Kim, B. (2026). KPoEM: A human-annotated dataset for emotion classification and RAG-based poetry generation in Korean modern poetry. The Review of Korean Studies, 29(1), 161–206. https://doi.org/10.25024/review.2026.29.1.161
-
----
+> Lim, I., Ji, H., & Kim, B. (2026). KPoEM: A human-annotated dataset for emotion classification and RAG-based poetry generation in Korean modern poetry. *The Review of Korean Studies, 29*(1), 161–206. [10.25024/review.2026.29.1.006](https://doi.org/10.25024/review.2026.29.1.006)
 
 ### 🎨 KCoEM Dataset
-- IRO LIM
-- Repository: [Zenodo](https://zenodo.org/records/19464212)
+
+**Contributor:** IRO LIM
+
+- [Zenodo](https://zenodo.org/records/19464212)
 
 ### 🌈 Co-Reading
-- IRO LIM
-- Repository: [Github](https://github.com/poet-developer/Co-Reading)
+
+**Contributor:** IRO LIM
+
+- [GitHub](https://github.com/poet-developer/Co-Reading)

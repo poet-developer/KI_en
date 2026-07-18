@@ -1,53 +1,53 @@
 // KOTE 44 (인덱스 0~43)
 const KOTE_44 = [
-  "불평/불만",
-  "환영/호의",
-  "감동/감탄",
-  "지긋지긋",
-  "고마움",
-  "슬픔",
-  "화남/분노",
-  "존경",
-  "기대감",
-  "우쭐댐/무시함",
-  "안타까움/실망",
-  "비장함",
-  "의심/불신",
-  "뿌듯함",
-  "편안/쾌적",
-  "신기함/관심",
-  "아껴주는",
-  "부끄러움",
-  "공포/무서움",
-  "절망",
-  "한심함",
-  "역겨움/징그러움",
-  "짜증",
-  "어이없음",
-  "없음",
-  "패배/자기혐오",
-  "귀찮음",
-  "힘듦/지침",
-  "즐거움/신남",
-  "깨달음",
-  "죄책감",
-  "증오/혐오",
-  "흐뭇함(귀여움/예쁨)",
-  "당황/난처",
-  "경악",
-  "부담/안_내킴",
-  "서러움",
-  "재미없음",
-  "불쌍함/연민",
-  "놀람",
-  "행복",
-  "불안/걱정",
-  "기쁨",
-  "안심/신뢰",
+  "Complaint / Dissatisfaction",
+  "Welcome / Favor",
+  "Impressed / Admiration",
+  "Fed up",
+  "Gratitude",
+  "Sadness",
+  "Anger / Rage",
+  "Respect",
+  "Anticipation",
+  "Arrogance / Disregard",
+  "Pitifulness / Disappointment",
+  "Resolute",
+  "Doubt / Distrust",
+  "Pride",
+  "Comfort / Cozy",
+  "Curiosity / Interest",
+  "Caring",
+  "Shame",
+  "Fear/Scary",
+  "Despair",
+  "Pathetic ",
+  "Disgust / Repulsiveness",
+  "Irritation",
+  "Preposterous ",
+  "NO EMOTION",
+  "Defeat / Self-hatred",
+  "Laziness",
+  "Fatigue / Exhaustion",
+  "Pleasure / Excitement",
+  "Realization",
+  "Guilt",
+  "Loathing / Hatred",
+  "Pleased (Cute / Pretty)",
+  "Embarrassment / Awkwardness",
+  "Shock",
+  "Burden / Unwillingness",
+  "Sorrow",
+  "Boredom",
+  "Pity / Compassion",
+  "Surprise",
+  "Happiness",
+  "Anxiety / Worry",
+  "Joy",
+  "Relief / Trust",
 ];
 
 // 기본값
-let selected = "불평/불만";
+let selected = "Complaint / Dissatisfaction";
 
 let currentScript = document.currentScript;
 
@@ -142,13 +142,13 @@ document.addEventListener("keydown", (e) => {
 });
 
 function updateWordcloudDescription() {
-  const selectedEmotion = selected || "선택한 감정";
+  const selectedEmotion = selected || "selected emotion";
 
   const description = document.getElementById("wordcloudDescription");
 
   description.innerHTML = `
-    <b>${selectedEmotion}</b>과 관련성이 높은 단어들을
-    시각화한 <b>${activeAuthor.textContent.trim()}</b> 작품의 워드클라우드다.
+    This word cloud visualizes the words in <b>${activeAuthor.textContent.trim()}</b>'s
+    poetry that are most strongly associated with <b>${selectedEmotion}</b>.
   `;
 }
 

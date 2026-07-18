@@ -21,50 +21,50 @@
 
 /* 각 id에 색상 지정: background-color만 써도 되고,
    --emotion-color 변수도 같이 넣어두었음 */
-/* #불평\/불만{ --emotion-color:#6b7280; background-color:#6B7280; color:#fff; }         
-#환영\/호의{ --emotion-color:#34D399; background-color:#34D399; }                   
-#감동\/감탄{ --emotion-color:#F59E0B; background-color:#F59E0B; }                    
-#지긋지긋{ --emotion-color:#4B5563; background-color:#4B5563; color:#fff; }        
-#고마움{ --emotion-color:#FDE68A; background-color:#FDE68A; }                        
-#슬픔{ --emotion-color:#3B82F6; background-color:#3B82F6; color:#fff; }            
-#화남\/분노{ --emotion-color:#EF4444; background-color:#EF4444; color:#fff; }    
-#존경{ --emotion-color:#7C3AED; background-color:#7C3AED; color:#fff; }              
-#기대감{ --emotion-color:#10B981; background-color:#10B981; }                     
-#우쭐댐\/무시함{ --emotion-color:#E11D48; background-color:#E11D48; color:#fff; }   
-#안타까움\/실망{ --emotion-color:#60A5FA; background-color:#60A5FA; }               
-#비장함{ --emotion-color:#111827; background-color:#111827; color:#fff; }       
-#의심\/불신{ --emotion-color:#8B5E34; background-color:#8B5E34; color:#fff; }       
-#뿌듯함{ --emotion-color:#22C55E; background-color:#22C55E; }                
-#편안\/쾌적{ --emotion-color:#A7F3D0; background-color:#A7F3D0; }                
-#신기함\/관심{ --emotion-color:#38BDF8; background-color:#38BDF8; }            
-#아껴주는{ --emotion-color:#FBCFE8; background-color:#FBCFE8; }             
-#부끄러움{ --emotion-color:#FB7185; background-color:#FB7185; }                 
-#공포\/무서움{ --emotion-color:#0F766E; background-color:#0F766E; color:#fff; }     
-#절망{ --emotion-color:#1F2937; background-color:#1F2937; color:#fff; }         
-#한심함{ --emotion-color:#9CA3AF; background-color:#9CA3AF; }                   
-#역겨움\/징그러움{ --emotion-color:#65A30D; background-color:#65A30D; color:#fff; } 
-#짜증{ --emotion-color:#F97316; background-color:#F97316; }                        
-#어이없음{ --emotion-color:#A855F7; background-color:#A855F7; color:#fff; }         
-#없음{ --emotion-color:#E5E7EB; background-color:#E5E7EB; }                          
-#패배\/자기혐오{ --emotion-color:#7F1D1D; background-color:#7F1D1D; color:#fff; }   
-#귀찮음{ --emotion-color:#9AA6B2; background-color:#9AA6B2; }                     
-#힘듦\/지침{ --emotion-color:#64748B; background-color:#64748B; color:#fff; }       
-#즐거움\/신남{ --emotion-color:#FACC15; background-color:#FACC15; }                
-#깨달음{ --emotion-color:#06B6D4; background-color:#06B6D4; }                   
-#죄책감{ --emotion-color:#5B21B6; background-color:#5B21B6; color:#fff; }          
-#증오\/혐오{ --emotion-color:#991B1B; background-color:#991B1B; color:#fff; }    
-#흐뭇함\(귀여움\/예쁨\){ --emotion-color:#FDA4AF; background-color:#FDA4AF; }       
-#당황\/난처{ --emotion-color:#F472B6; background-color:#F472B6; }                    
-#경악{ --emotion-color:#DC2626; background-color:#DC2626; color:#fff; }              
-#부담\/안_내킴{ --emotion-color:#0EA5E9; background-color:#0EA5E9; color:#fff; }     
-#서러움{ --emotion-color:#2563EB; background-color:#2563EB; color:#fff; }          
-#재미없음{ --emotion-color:#94A3B8; background-color:#94A3B8; }              
-#불쌍함\/연민{ --emotion-color:#93C5FD; background-color:#93C5FD; }          
-#놀람{ --emotion-color:#FB923C; background-color:#FB923C; }                          
-#행복{ --emotion-color:#FDE047; background-color:#FDE047; }                         
-#불안\/걱정{ --emotion-color:#0F172A; background-color:#0F172A; color:#fff; }     
-#기쁨{ --emotion-color:#A3E635; background-color:#A3E635; }                    
-#안심\/신뢰{ --emotion-color:#22D3EE; background-color:#22D3EE; }          
+/* [id="Complaint / Dissatisfaction"]{ --emotion-color:#6b7280; background-color:#6B7280; color:#fff; }
+[id="Welcome / Favor"]{ --emotion-color:#34D399; background-color:#34D399; }
+[id="Being moved / Admiration"]{ --emotion-color:#F59E0B; background-color:#F59E0B; }
+[id="Weariness"]{ --emotion-color:#4B5563; background-color:#4B5563; color:#fff; }
+[id="Gratitude"]{ --emotion-color:#FDE68A; background-color:#FDE68A; }
+[id="Sadness"]{ --emotion-color:#3B82F6; background-color:#3B82F6; color:#fff; }
+[id="Anger / Rage"]{ --emotion-color:#EF4444; background-color:#EF4444; color:#fff; }
+[id="Respect"]{ --emotion-color:#7C3AED; background-color:#7C3AED; color:#fff; }
+[id="Anticipation"]{ --emotion-color:#10B981; background-color:#10B981; }
+[id="Conceit / Disdain"]{ --emotion-color:#E11D48; background-color:#E11D48; color:#fff; }
+[id="Regret / Disappointment"]{ --emotion-color:#60A5FA; background-color:#60A5FA; }
+[id="Solemn resolve"]{ --emotion-color:#111827; background-color:#111827; color:#fff; }
+[id="Doubt / Distrust"]{ --emotion-color:#8B5E34; background-color:#8B5E34; color:#fff; }
+[id="Pride"]{ --emotion-color:#22C55E; background-color:#22C55E; }
+[id="Comfort / Ease"]{ --emotion-color:#A7F3D0; background-color:#A7F3D0; }
+[id="Wonder / Interest"]{ --emotion-color:#38BDF8; background-color:#38BDF8; }
+[id="Affection"]{ --emotion-color:#FBCFE8; background-color:#FBCFE8; }
+[id="Shame"]{ --emotion-color:#FB7185; background-color:#FB7185; }
+[id="Fear"]{ --emotion-color:#0F766E; background-color:#0F766E; color:#fff; }
+[id="Despair"]{ --emotion-color:#1F2937; background-color:#1F2937; color:#fff; }
+[id="Contempt"]{ --emotion-color:#9CA3AF; background-color:#9CA3AF; }
+[id="Disgust / Revulsion"]{ --emotion-color:#65A30D; background-color:#65A30D; color:#fff; }
+[id="Irritation"]{ --emotion-color:#F97316; background-color:#F97316; }
+[id="Disbelief"]{ --emotion-color:#A855F7; background-color:#A855F7; color:#fff; }
+[id="None"]{ --emotion-color:#E5E7EB; background-color:#E5E7EB; }
+[id="Defeat / Self-loathing"]{ --emotion-color:#7F1D1D; background-color:#7F1D1D; color:#fff; }
+[id="Annoyance"]{ --emotion-color:#9AA6B2; background-color:#9AA6B2; }
+[id="Exhaustion"]{ --emotion-color:#64748B; background-color:#64748B; color:#fff; }
+[id="Enjoyment / Excitement"]{ --emotion-color:#FACC15; background-color:#FACC15; }
+[id="Realization"]{ --emotion-color:#06B6D4; background-color:#06B6D4; }
+[id="Guilt"]{ --emotion-color:#5B21B6; background-color:#5B21B6; color:#fff; }
+[id="Hatred / Aversion"]{ --emotion-color:#991B1B; background-color:#991B1B; color:#fff; }
+[id="Delight (Cuteness / Beauty)"]{ --emotion-color:#FDA4AF; background-color:#FDA4AF; }
+[id="Embarrassment / Awkwardness"]{ --emotion-color:#F472B6; background-color:#F472B6; }
+[id="Shock"]{ --emotion-color:#DC2626; background-color:#DC2626; color:#fff; }
+[id="Reluctance / Burden"]{ --emotion-color:#0EA5E9; background-color:#0EA5E9; color:#fff; }
+[id="Sorrow"]{ --emotion-color:#2563EB; background-color:#2563EB; color:#fff; }
+[id="Boredom"]{ --emotion-color:#94A3B8; background-color:#94A3B8; }
+[id="Pity / Compassion"]{ --emotion-color:#93C5FD; background-color:#93C5FD; }
+[id="Surprise"]{ --emotion-color:#FB923C; background-color:#FB923C; }
+[id="Happiness"]{ --emotion-color:#FDE047; background-color:#FDE047; }
+[id="Anxiety / Worry"]{ --emotion-color:#0F172A; background-color:#0F172A; color:#fff; }
+[id="Joy"]{ --emotion-color:#A3E635; background-color:#A3E635; }
+[id="Relief / Trust"]{ --emotion-color:#22D3EE; background-color:#22D3EE; }
 
 /* (선택) 텍스트 색을 자동으로 맞추고 싶으면,
    JS로 luminance 계산해서 color를 바꾸는 게 제일 정확함 */
@@ -72,50 +72,50 @@
 
    /* 각 id에 색상 지정: background-color만 써도 되고,
    --emotion-color 변수도 같이 넣어두었음 */
-#불평\/불만{ --emotion-color:rgb(101, 49, 121); background-color:rgb(101, 49, 121); color:#fff; }          /* gray */
-#환영\/호의{ --emotion-color:rgb(255, 99, 99); background-color:rgb(255, 99, 99); }                    /* mint */
-#감동\/감탄{ --emotion-color:rgb(190, 26, 52); background-color:rgb(190, 26, 52); }                    /* amber */
-#지긋지긋{ --emotion-color:rgb(0, 116, 56); background-color:rgb(0, 116, 56); color:#fff; }          /* dark gray */
-#고마움{ --emotion-color:rgb(224, 152, 178); background-color:rgb(224, 152, 178); }                        /* soft yellow */
-#슬픔{ --emotion-color:rgb(76, 87, 101); background-color:rgb(76, 87, 101); color:#fff; }              /* blue */
-#화남\/분노{ --emotion-color:rgb(166, 29, 57); background-color:rgb(166, 29, 57); color:#fff; }        /* red */
-#존경{ --emotion-color:rgb(169,50, 112); background-color:rgb(124, 58, 237); color:#fff; }              /* purple */
-#기대감{ --emotion-color:#10B981; background-color:#10B981; }                        /* green */
-#우쭐댐\/무시함{ --emotion-color:#E11D48; background-color:#E11D48; color:#fff; }    /* rose */
-#안타까움\/실망{ --emotion-color:#60A5FA; background-color:#60A5FA; }                /* light blue */
-#비장함{ --emotion-color:#111827; background-color:#111827; color:#fff; }            /* near black */
-#의심\/불신{ --emotion-color:#8B5E34; background-color:#8B5E34; color:#fff; }        /* brown */
-#뿌듯함{ --emotion-color:#22C55E; background-color:#22C55E; }                        /* vivid green */
-#편안\/쾌적{ --emotion-color:#A7F3D0; background-color:#A7F3D0; }                    /* pale mint */
-#신기함\/관심{ --emotion-color:#38BDF8; background-color:#38BDF8; }                  /* sky */
-#아껴주는{ --emotion-color:#FBCFE8; background-color:#FBCFE8; }                      /* pink */
-#부끄러움{ --emotion-color:#FB7185; background-color:#FB7185; }                      /* soft rose */
-#공포\/무서움{ --emotion-color:#0F766E; background-color:#0F766E; color:#fff; }      /* deep teal */
-#절망{ --emotion-color:#1F2937; background-color:#1F2937; color:#fff; }              /* charcoal */
-#한심함{ --emotion-color:#9CA3AF; background-color:#9CA3AF; }                        /* gray */
-#역겨움\/징그러움{ --emotion-color:#65A30D; background-color:#65A30D; color:#fff; }  /* sickly green */
-#짜증{ --emotion-color:#F97316; background-color:#F97316; }                          /* orange */
-#어이없음{ --emotion-color:#A855F7; background-color:#A855F7; color:#fff; }          /* violet */
-#없음{ --emotion-color:#E5E7EB; background-color:#E5E7EB; }                          /* very light gray */
-#패배\/자기혐오{ --emotion-color:#7F1D1D; background-color:#7F1D1D; color:#fff; }    /* dark maroon */
-#귀찮음{ --emotion-color:#9AA6B2; background-color:#9AA6B2; }                        /* dusty gray-blue */
-#힘듦\/지침{ --emotion-color:#64748B; background-color:#64748B; color:#fff; }        /* slate */
-#즐거움\/신남{ --emotion-color:#FACC15; background-color:#FACC15; }                  /* bright yellow */
-#깨달음{ --emotion-color:#06B6D4; background-color:#06B6D4; }                        /* cyan */
-#죄책감{ --emotion-color:#5B21B6; background-color:#5B21B6; color:#fff; }            /* deep purple */
-#증오\/혐오{ --emotion-color:#991B1B; background-color:#991B1B; color:#fff; }        /* deep red */
-#흐뭇함\(귀여움\/예쁨\){ --emotion-color:#FDA4AF; background-color:#FDA4AF; }        /* cute pink */
-#당황\/난처{ --emotion-color:#F472B6; background-color:#F472B6; }                    /* magenta-pink */
-#경악{ --emotion-color:#DC2626; background-color:#DC2626; color:#fff; }              /* strong red */
-#부담\/안_내킴{ --emotion-color:#0EA5E9; background-color:#0EA5E9; color:#fff; }     /* blue-cyan */
-#서러움{ --emotion-color:#2563EB; background-color:#2563EB; color:#fff; }            /* deep blue */
-#재미없음{ --emotion-color:#94A3B8; background-color:#94A3B8; }                      /* pale slate */
-#불쌍함\/연민{ --emotion-color:#93C5FD; background-color:#93C5FD; }                  /* gentle blue */
-#놀람{ --emotion-color:#FB923C; background-color:#FB923C; }                          /* tangerine */
-#행복{ --emotion-color:#FDE047; background-color:#FDE047; }                          /* sunshine */
-#불안\/걱정{ --emotion-color:#0F172A; background-color:#0F172A; color:#fff; }        /* very dark navy */
-#기쁨{ --emotion-color:#A3E635; background-color:#A3E635; }                          /* lime */
-#안심\/신뢰{ --emotion-color:#22D3EE; background-color:#22D3EE; }                    /* calm cyan */
+[id="Complaint / Dissatisfaction"]{ --emotion-color:rgb(101, 49, 121); background-color:rgb(101, 49, 121); color:#fff; }          /* gray */
+[id="Welcome / Favor"]{ --emotion-color:rgb(255, 99, 99); background-color:rgb(255, 99, 99); }                    /* mint */
+[id="Being moved / Admiration"]{ --emotion-color:rgb(190, 26, 52); background-color:rgb(190, 26, 52); }                    /* amber */
+[id="Weariness"]{ --emotion-color:rgb(0, 116, 56); background-color:rgb(0, 116, 56); color:#fff; }          /* dark gray */
+[id="Gratitude"]{ --emotion-color:rgb(224, 152, 178); background-color:rgb(224, 152, 178); }                        /* soft yellow */
+[id="Sadness"]{ --emotion-color:rgb(76, 87, 101); background-color:rgb(76, 87, 101); color:#fff; }              /* blue */
+[id="Anger / Rage"]{ --emotion-color:rgb(166, 29, 57); background-color:rgb(166, 29, 57); color:#fff; }        /* red */
+[id="Respect"]{ --emotion-color:rgb(169,50, 112); background-color:rgb(124, 58, 237); color:#fff; }              /* purple */
+[id="Anticipation"]{ --emotion-color:#10B981; background-color:#10B981; }                        /* green */
+[id="Conceit / Disdain"]{ --emotion-color:#E11D48; background-color:#E11D48; color:#fff; }    /* rose */
+[id="Regret / Disappointment"]{ --emotion-color:#60A5FA; background-color:#60A5FA; }                /* light blue */
+[id="Solemn resolve"]{ --emotion-color:#111827; background-color:#111827; color:#fff; }            /* near black */
+[id="Doubt / Distrust"]{ --emotion-color:#8B5E34; background-color:#8B5E34; color:#fff; }        /* brown */
+[id="Pride"]{ --emotion-color:#22C55E; background-color:#22C55E; }                        /* vivid green */
+[id="Comfort / Ease"]{ --emotion-color:#A7F3D0; background-color:#A7F3D0; }                    /* pale mint */
+[id="Wonder / Interest"]{ --emotion-color:#38BDF8; background-color:#38BDF8; }                  /* sky */
+[id="Affection"]{ --emotion-color:#FBCFE8; background-color:#FBCFE8; }                      /* pink */
+[id="Shame"]{ --emotion-color:#FB7185; background-color:#FB7185; }                      /* soft rose */
+[id="Fear"]{ --emotion-color:#0F766E; background-color:#0F766E; color:#fff; }      /* deep teal */
+[id="Despair"]{ --emotion-color:#1F2937; background-color:#1F2937; color:#fff; }              /* charcoal */
+[id="Contempt"]{ --emotion-color:#9CA3AF; background-color:#9CA3AF; }                        /* gray */
+[id="Disgust / Revulsion"]{ --emotion-color:#65A30D; background-color:#65A30D; color:#fff; }  /* sickly green */
+[id="Irritation"]{ --emotion-color:#F97316; background-color:#F97316; }                          /* orange */
+[id="Disbelief"]{ --emotion-color:#A855F7; background-color:#A855F7; color:#fff; }          /* violet */
+[id="None"]{ --emotion-color:#E5E7EB; background-color:#E5E7EB; }                          /* very light gray */
+[id="Defeat / Self-loathing"]{ --emotion-color:#7F1D1D; background-color:#7F1D1D; color:#fff; }    /* dark maroon */
+[id="Annoyance"]{ --emotion-color:#9AA6B2; background-color:#9AA6B2; }                        /* dusty gray-blue */
+[id="Exhaustion"]{ --emotion-color:#64748B; background-color:#64748B; color:#fff; }        /* slate */
+[id="Enjoyment / Excitement"]{ --emotion-color:#FACC15; background-color:#FACC15; }                  /* bright yellow */
+[id="Realization"]{ --emotion-color:#06B6D4; background-color:#06B6D4; }                        /* cyan */
+[id="Guilt"]{ --emotion-color:#5B21B6; background-color:#5B21B6; color:#fff; }            /* deep purple */
+[id="Hatred / Aversion"]{ --emotion-color:#991B1B; background-color:#991B1B; color:#fff; }        /* deep red */
+[id="Delight (Cuteness / Beauty)"]{ --emotion-color:#FDA4AF; background-color:#FDA4AF; }        /* cute pink */
+[id="Embarrassment / Awkwardness"]{ --emotion-color:#F472B6; background-color:#F472B6; }                    /* magenta-pink */
+[id="Shock"]{ --emotion-color:#DC2626; background-color:#DC2626; color:#fff; }              /* strong red */
+[id="Reluctance / Burden"]{ --emotion-color:#0EA5E9; background-color:#0EA5E9; color:#fff; }     /* blue-cyan */
+[id="Sorrow"]{ --emotion-color:#2563EB; background-color:#2563EB; color:#fff; }            /* deep blue */
+[id="Boredom"]{ --emotion-color:#94A3B8; background-color:#94A3B8; }                      /* pale slate */
+[id="Pity / Compassion"]{ --emotion-color:#93C5FD; background-color:#93C5FD; }                  /* gentle blue */
+[id="Surprise"]{ --emotion-color:#FB923C; background-color:#FB923C; }                          /* tangerine */
+[id="Happiness"]{ --emotion-color:#FDE047; background-color:#FDE047; }                          /* sunshine */
+[id="Anxiety / Worry"]{ --emotion-color:#0F172A; background-color:#0F172A; color:#fff; }        /* very dark navy */
+[id="Joy"]{ --emotion-color:#A3E635; background-color:#A3E635; }                          /* lime */
+[id="Relief / Trust"]{ --emotion-color:#22D3EE; background-color:#22D3EE; }                    /* calm cyan */
 
 /* (선택) 텍스트 색을 자동으로 맞추고 싶으면,
    JS로 luminance 계산해서 color를 바꾸는 게 제일 정확함 */

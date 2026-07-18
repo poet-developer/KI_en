@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distant Reading | 김소월</title>
+    <title>Distant Reading | Kim Sowol</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/wordcloude_style.css">
     <link rel="stylesheet" href="../styles/header.css">
@@ -20,20 +20,20 @@
   </nav>
 </header>
 <h2>Distant Reading</h2>
-<h3>멀리서 읽기</h3>
+<h3>Explore emotional patterns across poets and works</h3>
 <div class="author-buttons">
-    <a href="../distant_reading/distant-kim.html"><button class="author-btn">김소월</button></a>
-    <a href="../distant_reading/distant-yun.html"><button class="author-btn">윤동주</button></a>
-    <a href="../distant_reading/distant-lee.html"><button class="author-btn">이상</button></a>
-    <a href="../distant_reading/distant-lim.html"><button class="author-btn">임화</button></a>
-    <a href="../distant_reading/distant-han.html"><button class="author-btn active">한용운</button></a>
+    <a href="../distant_reading/distant-kim.html"><button class="author-btn">Kim Sowol</button></a>
+    <a href="../distant_reading/distant-yun.html"><button class="author-btn">Yun Dong-ju</button></a>
+    <a href="../distant_reading/distant-lee.html"><button class="author-btn">Yi Sang</button></a>
+    <a href="../distant_reading/distant-lim.html"><button class="author-btn">Im Hwa</button></a>
+    <a href="../distant_reading/distant-han.html"><button class="author-btn active">Han Yong-un</button></a>
   </div>
 <div class = "wordcloud_container">
   <div class="dropdown" id="emotionDropdown">
     <button class="toggle-btn" id="toggleBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
       <div class="label">
-        <span class="title">감정 선택</span>
-        <span class="value" id="selectedText">불평/불만</span>
+        <span class="title">Select Emotion</span>
+        <span class="value" id="selectedText">Complaint / Dissatisfaction</span>
       </div>
       <span class="chev" aria-hidden="true"></span>
     </button>
@@ -42,10 +42,10 @@
   </div>
 
   <div class="out">
-    <!-- 현재 선택: <code id="debugOut">불평/불만</code> -->
+    <!-- 현재 선택: <code id="debugOut">Complaint / Dissatisfaction</code> -->
     <div class="emotion-description"></div>
     <p class="shap_desc" id="wordcloudDescription"></p>
-<p class="shap_desc">단어가 클수록 해당 감정 예측에 더 크게 기여한 시인의 어휘를 의미한다.</p>
+<p class="shap_desc">Larger words contributed more strongly to the model's prediction of the selected emotion.</p>
 
 <p class="shap_desc"><br/>Powered by <a href="https://shap.readthedocs.io/en/latest/">SHAP</a> (SHapley Additive exPlanations)</p>
   </div>
@@ -53,7 +53,7 @@
   <div>                        
         <div class="iframe-wrapper-line">       
           <iframe src="../source/han/line_han.html"
-            height="500"
+            height="560"
             style="border:none;">
           </iframe>
         </div>  
@@ -69,7 +69,7 @@
 function resizeIframe() {
   const iframe = document.getElementById("heatmapFrame");
 
-  const baseWidth = 1400;   // plot 원래 width
+  const baseWidth = 1050;   // square-cell heatmap width
   const baseHeight = 1100;
 
   const containerWidth = window.innerWidth;

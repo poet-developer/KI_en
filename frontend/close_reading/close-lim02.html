@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Close Reading | 임화 <우리 오빠와 화로></title>
+<title>Close Reading | Im Hwa My Brother and the Brazier</title>
 <link rel="stylesheet" href="../styles/styles.css">
 <link rel="stylesheet" href="../styles/emotion_tag.css">
 <link rel="stylesheet" href="../styles/header.css">
@@ -20,17 +20,17 @@
 </header>
 
 <h2>Close Reading</h2>
-<h3>가까이 읽기</h3>
+<h3>Explore individual poems and line-level emotions</h3>
 <div class="author-buttons">
-    <a href="close-kim-menu.html"><button class="author-btn">김소월</button></a>
-    <a href="close-yun-menu.html"><button class="author-btn">윤동주</button></a>
-    <a href="close-lee-menu.html"><button class="author-btn">이상</button></a>
-    <a href="close-lim-menu.html"><button class="author-btn active">임화</button></a>
-    <a href="close-han-menu.html"><button class="author-btn">한용운</button></a>
+    <a href="close-kim-menu.html"><button class="author-btn">Kim Sowol</button></a>
+    <a href="close-yun-menu.html"><button class="author-btn">Yun Dong-ju</button></a>
+    <a href="close-lee-menu.html"><button class="author-btn">Yi Sang</button></a>
+    <a href="close-lim-menu.html"><button class="author-btn active">Im Hwa</button></a>
+    <a href="close-han-menu.html"><button class="author-btn">Han Yong-un</button></a>
   </div>
 
 <div class="poem-frame">
-  <p class="poem-title">우리 오빠와 화로</p>
+  <p class="poem-title">My Brother and the Brazier</p>
 
   <p class="poem-line" id="line_1">사랑하는 우리 오빠 어저께 그만 그렇게 위하시던 오빠의 거북무늬 질화로가 깨어졌어요</p>
   <p class="poem-line" id="line_2">언제나 오빠가 우리들의 「피오닐」 조그만 기수라 부르는 영남(永男)이가</p>
@@ -107,12 +107,12 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-header">
       <p id="modalTitle" class="modal-title">Line Detail</p>
-      <button class="modal-close" id="modalCloseBtn" aria-label="닫기">×</button>
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">×</button>
     </div>
     <div class="modal-body">
       <p id="modalLineText" class="clicked-line"></p>
       <div class = "tag_contatiner"></div>
-      <p class="hint">배경을 클릭하거나 ESC를 누르면 닫힙니다.</p>
+      <p class="hint">Click outside the dialog or press Esc to close.</p>
     </div>
   </div>
 </div>
@@ -122,8 +122,24 @@
   const modalLineText = document.getElementById("modalLineText");
   const closeBtn = document.getElementById("modalCloseBtn");
 
-  function openModal(text) {
-    modalLineText.textContent = `"${text}"`;
+  function openModal(line) {
+    const english = line.querySelector(".poem-line-en")?.textContent.trim() || line.textContent.trim();
+    const korean = line.querySelector(".poem-line-ko")?.textContent.trim() || "";
+    modalLineText.replaceChildren();
+
+    const englishLine = document.createElement("span");
+    englishLine.className = "modal-line-en";
+    englishLine.textContent = english;
+    modalLineText.appendChild(englishLine);
+
+    if (korean) {
+      const koreanLine = document.createElement("span");
+      koreanLine.className = "modal-line-ko";
+      koreanLine.lang = "ko";
+      koreanLine.textContent = korean;
+      modalLineText.appendChild(koreanLine);
+    }
+
     overlay.classList.add("open");
     overlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden"; // 스크롤 잠금
@@ -138,19 +154,19 @@
   // ✅ 각 poem-line 클릭 시 모달 열기
   document.querySelectorAll(".poem-line").forEach(line => {
     line.addEventListener("click", () => {
-      openModal(line.textContent.trim());
+      openModal(line);
     });
   });
 
-  // ✅ 닫기 버튼
+  // ✅ Close 버튼
   closeBtn.addEventListener("click", closeModal);
 
-  // ✅ 배경(오버레이) 클릭 시 닫기 (모달 박스 클릭은 제외)
+  // ✅ 배경(오버레이) 클릭 시 Close (모달 박스 클릭은 제외)
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closeModal();
   });
 
-  // ✅ ESC로 닫기
+  // ✅ ESC로 Close
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && overlay.classList.contains("open")) {
       closeModal();
@@ -162,347 +178,347 @@
 const emotionDummyData = {
 
 line_1: {
-  annotator_01: ["아껴주는", "안타까움/실망", "놀람", "당황/난처", "경악", "슬픔", "죄책감", "깨달음"],
-  annotator_02: ["아껴주는", "서러움", "슬픔", "죄책감", "당황/난처", "불안/걱정", "안타까움/실망"],
-  annotator_03: ["당황/난처", "부담/안_내킴", "불쌍함/연민", "불안/걱정", "서러움", "안타까움/실망", "존경"],
-  annotator_04: ["당황/난처", "불안/걱정", "안타까움/실망"],
-  annotator_05: ["경악", "놀람", "불쌍함/연민", "불안/걱정", "슬픔", "안타까움/실망"]
+  annotator_01: ["Affection", "Regret / Disappointment", "Surprise", "Embarrassment / Awkwardness", "Shock", "Sadness", "Guilt", "Realization"],
+  annotator_02: ["Affection", "Sorrow", "Sadness", "Guilt", "Embarrassment / Awkwardness", "Anxiety / Worry", "Regret / Disappointment"],
+  annotator_03: ["Embarrassment / Awkwardness", "Reluctance / Burden", "Pity / Compassion", "Anxiety / Worry", "Sorrow", "Regret / Disappointment", "Respect"],
+  annotator_04: ["Embarrassment / Awkwardness", "Anxiety / Worry", "Regret / Disappointment"],
+  annotator_05: ["Shock", "Surprise", "Pity / Compassion", "Anxiety / Worry", "Sadness", "Regret / Disappointment"]
 },
 
 line_2: {
-  annotator_01: ["아껴주는", "기대감", "환영/호의", "흐뭇함(귀여움/예쁨)", "뿌듯함"],
-  annotator_02: ["흐뭇함(귀여움/예쁨)", "아껴주는", "기대감", "불안/걱정"],
-  annotator_03: ["불쌍함/연민", "부담/안_내킴", "불안/걱정", "없음"],
-  annotator_04: ["신기함/관심", "아껴주는", "흐뭇함(귀여움/예쁨)", "환영/호의"],
-  annotator_05: ["아껴주는", "흐뭇함(귀여움/예쁨)"]
+  annotator_01: ["Affection", "Anticipation", "Welcome / Favor", "Delight (Cuteness / Beauty)", "Pride"],
+  annotator_02: ["Delight (Cuteness / Beauty)", "Affection", "Anticipation", "Anxiety / Worry"],
+  annotator_03: ["Pity / Compassion", "Reluctance / Burden", "Anxiety / Worry", "None"],
+  annotator_04: ["Wonder / Interest", "Affection", "Delight (Cuteness / Beauty)", "Welcome / Favor"],
+  annotator_05: ["Affection", "Delight (Cuteness / Beauty)"]
 },
 
 line_3: {
-  annotator_01: ["비장함", "서러움", "절망", "패배/자기혐오", "슬픔", "불안/걱정"],
-  annotator_02: ["당황/난처", "부담/안_내킴", "불평/불만", "안타까움/실망", "증오/혐오", "지긋지긋", "한심함", "힘듦/지침", "서러움", "불쌍함/연민"],
-  annotator_03: ["당황/난처", "부담/안_내킴", "불평/불만"],
-  annotator_04: ["경악", "부담/안_내킴", "불평/불만", "절망", "증오/혐오"],
-  annotator_05: ["비장함", "힘듦/지침"]
+  annotator_01: ["Solemn resolve", "Sorrow", "Despair", "Defeat / Self-loathing", "Sadness", "Anxiety / Worry"],
+  annotator_02: ["Embarrassment / Awkwardness", "Reluctance / Burden", "Complaint / Dissatisfaction", "Regret / Disappointment", "Hatred / Aversion", "Weariness", "Contempt", "Exhaustion", "Sorrow", "Pity / Compassion"],
+  annotator_03: ["Embarrassment / Awkwardness", "Reluctance / Burden", "Complaint / Dissatisfaction"],
+  annotator_04: ["Shock", "Reluctance / Burden", "Complaint / Dissatisfaction", "Despair", "Hatred / Aversion"],
+  annotator_05: ["Solemn resolve", "Exhaustion"]
 },
 
 line_4: {
-  annotator_01: ["안타까움/실망", "당황/난처", "슬픔", "놀람"],
-  annotator_02: ["서러움", "슬픔", "안타까움/실망", "죄책감", "당황/난처", "불안/걱정"],
-  annotator_03: ["당황/난처", "부끄러움", "부담/안_내킴", "불안/걱정", "안타까움/실망"],
-  annotator_04: ["경악", "불안/걱정", "불평/불만", "당황/난처", "놀람", "안타까움/실망"],
-  annotator_05: ["놀람", "당황/난처", "서러움", "슬픔", "불안/걱정"]
+  annotator_01: ["Regret / Disappointment", "Embarrassment / Awkwardness", "Sadness", "Surprise"],
+  annotator_02: ["Sorrow", "Sadness", "Regret / Disappointment", "Guilt", "Embarrassment / Awkwardness", "Anxiety / Worry"],
+  annotator_03: ["Embarrassment / Awkwardness", "Shame", "Reluctance / Burden", "Anxiety / Worry", "Regret / Disappointment"],
+  annotator_04: ["Shock", "Anxiety / Worry", "Complaint / Dissatisfaction", "Embarrassment / Awkwardness", "Surprise", "Regret / Disappointment"],
+  annotator_05: ["Surprise", "Embarrassment / Awkwardness", "Sorrow", "Sadness", "Anxiety / Worry"]
 },
 
 line_5: {
-  annotator_01: ["불쌍함/연민"],
-  annotator_02: ["불쌍함/연민", "서러움", "슬픔", "패배/자기혐오"],
-  annotator_03: ["불쌍함/연민", "안타까움/실망"],
-  annotator_04: ["불안/걱정", "불쌍함/연민", "슬픔", "안타까움/실망", "힘듦/지침"],
-  annotator_05: ["불쌍함/연민", "안타까움/실망"]
+  annotator_01: ["Pity / Compassion"],
+  annotator_02: ["Pity / Compassion", "Sorrow", "Sadness", "Defeat / Self-loathing"],
+  annotator_03: ["Pity / Compassion", "Regret / Disappointment"],
+  annotator_04: ["Anxiety / Worry", "Pity / Compassion", "Sadness", "Regret / Disappointment", "Exhaustion"],
+  annotator_05: ["Pity / Compassion", "Regret / Disappointment"]
 },
 
 line_6: {
-  annotator_01: ["아껴주는", "서러움", "슬픔", "깨달음", "불쌍함/연민", "힘듦/지침"],
-  annotator_02: ["서러움", "슬픔", "안타까움/실망", "아껴주는", "불쌍함/연민"],
-  annotator_03: ["부담/안_내킴", "불쌍함/연민", "서러움", "슬픔", "안타까움/실망"],
-  annotator_04: ["절망", "힘듦/지침", "슬픔", "서러움", "불쌍함/연민"],
-  annotator_05: ["서러움", "슬픔", "안타까움/실망", "아껴주는"]
+  annotator_01: ["Affection", "Sorrow", "Sadness", "Realization", "Pity / Compassion", "Exhaustion"],
+  annotator_02: ["Sorrow", "Sadness", "Regret / Disappointment", "Affection", "Pity / Compassion"],
+  annotator_03: ["Reluctance / Burden", "Pity / Compassion", "Sorrow", "Sadness", "Regret / Disappointment"],
+  annotator_04: ["Despair", "Exhaustion", "Sadness", "Sorrow", "Pity / Compassion"],
+  annotator_05: ["Sorrow", "Sadness", "Regret / Disappointment", "Affection"]
 },
 
 line_7: {
-  annotator_01: ["아껴주는", "신기함/관심", "놀람", "당황/난처", "서러움", "불안/걱정"],
-  annotator_02: ["아껴주는", "불안/걱정", "안타까움/실망", "존경", "안심/신뢰", "서러움", "놀람"],
-  annotator_03: ["불쌍함/연민", "서러움", "슬픔", "아껴주는", "안타까움/실망"],
-  annotator_04: ["아껴주는", "안심/신뢰", "존경", "슬픔", "불쌍함/연민"],
-  annotator_05: ["편안/쾌적", "행복", "존경", "아껴주는", "안심/신뢰"]
+  annotator_01: ["Affection", "Wonder / Interest", "Surprise", "Embarrassment / Awkwardness", "Sorrow", "Anxiety / Worry"],
+  annotator_02: ["Affection", "Anxiety / Worry", "Regret / Disappointment", "Respect", "Relief / Trust", "Sorrow", "Surprise"],
+  annotator_03: ["Pity / Compassion", "Sorrow", "Sadness", "Affection", "Regret / Disappointment"],
+  annotator_04: ["Affection", "Relief / Trust", "Respect", "Sadness", "Pity / Compassion"],
+  annotator_05: ["Comfort / Ease", "Happiness", "Respect", "Affection", "Relief / Trust"]
 },
 
 line_8: {
-  annotator_01: ["깨달음", "뿌듯함", "환영/호의", "아껴주는"],
-  annotator_02: ["깨달음", "뿌듯함"],
-  annotator_03: ["존경", "아껴주는"],
-  annotator_04: ["기쁨", "아껴주는", "즐거움/신남", "행복"],
-  annotator_05: ["안심/신뢰", "우쭐댐/무시함"]
+  annotator_01: ["Realization", "Pride", "Welcome / Favor", "Affection"],
+  annotator_02: ["Realization", "Pride"],
+  annotator_03: ["Respect", "Affection"],
+  annotator_04: ["Joy", "Affection", "Enjoyment / Excitement", "Happiness"],
+  annotator_05: ["Relief / Trust", "Conceit / Disdain"]
 },
 
 line_9: {
-  annotator_01: ["안타까움/실망", "공포/무서움", "불안/걱정", "당황/난처", "절망"],
-  annotator_02: ["불안/걱정", "아껴주는", "안타까움/실망", "서러움", "슬픔", "불평/불만"],
-  annotator_03: ["부담/안_내킴", "불안/걱정", "안타까움/실망"],
-  annotator_04: ["불쌍함/연민", "불안/걱정", "슬픔", "안타까움/실망"],
-  annotator_05: ["안타까움/실망", "서러움", "슬픔"]
+  annotator_01: ["Regret / Disappointment", "Fear", "Anxiety / Worry", "Embarrassment / Awkwardness", "Despair"],
+  annotator_02: ["Anxiety / Worry", "Affection", "Regret / Disappointment", "Sorrow", "Sadness", "Complaint / Dissatisfaction"],
+  annotator_03: ["Reluctance / Burden", "Anxiety / Worry", "Regret / Disappointment"],
+  annotator_04: ["Pity / Compassion", "Anxiety / Worry", "Sadness", "Regret / Disappointment"],
+  annotator_05: ["Regret / Disappointment", "Sorrow", "Sadness"]
 },
 
 line_10: {
-  annotator_01: ["불안/걱정", "불쌍함/연민", "놀람", "당황/난처", "신기함/관심"],
-  annotator_02: ["당황/난처", "불쌍함/연민", "불안/걱정", "안타까움/실망", "힘듦/지침", "경악", "놀람"],
-  annotator_03: ["부담/안_내킴", "안타까움/실망"],
-  annotator_04: ["불안/걱정", "안타까움/실망"],
-  annotator_05: ["불안/걱정", "신기함/관심", "안타까움/실망"]
+  annotator_01: ["Anxiety / Worry", "Pity / Compassion", "Surprise", "Embarrassment / Awkwardness", "Wonder / Interest"],
+  annotator_02: ["Embarrassment / Awkwardness", "Pity / Compassion", "Anxiety / Worry", "Regret / Disappointment", "Exhaustion", "Shock", "Surprise"],
+  annotator_03: ["Reluctance / Burden", "Regret / Disappointment"],
+  annotator_04: ["Anxiety / Worry", "Regret / Disappointment"],
+  annotator_05: ["Anxiety / Worry", "Wonder / Interest", "Regret / Disappointment"]
 },
 
 line_11: {
-  annotator_01: ["깨달음", "아껴주는"],
-  annotator_02: ["깨달음", "비장함", "아껴주는", "안심/신뢰", "존경"],
-  annotator_03: ["서러움", "아껴주는", "안타까움/실망"],
-  annotator_04: ["깨달음", "아껴주는"],
-  annotator_05: ["고마움", "깨달음", "안심/신뢰"]
+  annotator_01: ["Realization", "Affection"],
+  annotator_02: ["Realization", "Solemn resolve", "Affection", "Relief / Trust", "Respect"],
+  annotator_03: ["Sorrow", "Affection", "Regret / Disappointment"],
+  annotator_04: ["Realization", "Affection"],
+  annotator_05: ["Gratitude", "Realization", "Relief / Trust"]
 },
 
 line_12: {
-  annotator_01: ["불쌍함/연민", "아껴주는", "죄책감", "신기함/관심"],
-  annotator_02: ["부끄러움", "불쌍함/연민", "아껴주는", "존경", "흐뭇함(귀여움/예쁨)"],
-  annotator_03: ["아껴주는", "불쌍함/연민", "힘듦/지침"],
-  annotator_04: ["불쌍함/연민", "슬픔", "존경", "아껴주는", "안심/신뢰", "행복"],
-  annotator_05: ["죄책감", "존경", "감동/감탄", "불쌍함/연민", "아껴주는"]
+  annotator_01: ["Pity / Compassion", "Affection", "Guilt", "Wonder / Interest"],
+  annotator_02: ["Shame", "Pity / Compassion", "Affection", "Respect", "Delight (Cuteness / Beauty)"],
+  annotator_03: ["Affection", "Pity / Compassion", "Exhaustion"],
+  annotator_04: ["Pity / Compassion", "Sadness", "Respect", "Affection", "Relief / Trust", "Happiness"],
+  annotator_05: ["Guilt", "Respect", "Being moved / Admiration", "Pity / Compassion", "Affection"]
 },
 
 line_13: {
-  annotator_01: ["아껴주는", "불쌍함/연민", "환영/호의"],
-  annotator_02: ["불쌍함/연민", "불안/걱정", "아껴주는", "존경"],
-  annotator_03: ["불쌍함/연민", "불안/걱정", "서러움", "안타까움/실망", "힘듦/지침"],
-  annotator_04: ["기쁨", "안심/신뢰", "흐뭇함(귀여움/예쁨)"],
-  annotator_05: ["불쌍함/연민", "불안/걱정", "아껴주는", "힘듦/지침"]
+  annotator_01: ["Affection", "Pity / Compassion", "Welcome / Favor"],
+  annotator_02: ["Pity / Compassion", "Anxiety / Worry", "Affection", "Respect"],
+  annotator_03: ["Pity / Compassion", "Anxiety / Worry", "Sorrow", "Regret / Disappointment", "Exhaustion"],
+  annotator_04: ["Joy", "Relief / Trust", "Delight (Cuteness / Beauty)"],
+  annotator_05: ["Pity / Compassion", "Anxiety / Worry", "Affection", "Exhaustion"]
 },
 
 line_14: {
-  annotator_01: ["안타까움/실망", "아껴주는", "당황/난처", "불안/걱정"],
-  annotator_02: ["흐뭇함(귀여움/예쁨)", "존경", "서러움", "경악", "당황/난처", "불쌍함/연민", "불안/걱정", "불평/불만", "안타까움/실망", "짜증"],
-  annotator_03: ["부담/안_내킴", "불쌍함/연민", "불안/걱정", "안타까움/실망", "슬픔"],
-  annotator_04: ["당황/난처", "슬픔", "안타까움/실망", "절망", "힘듦/지침"],
-  annotator_05: ["안타까움/실망", "의심/불신", "존경", "서러움", "슬픔"]
+  annotator_01: ["Regret / Disappointment", "Affection", "Embarrassment / Awkwardness", "Anxiety / Worry"],
+  annotator_02: ["Delight (Cuteness / Beauty)", "Respect", "Sorrow", "Shock", "Embarrassment / Awkwardness", "Pity / Compassion", "Anxiety / Worry", "Complaint / Dissatisfaction", "Regret / Disappointment", "Irritation"],
+  annotator_03: ["Reluctance / Burden", "Pity / Compassion", "Anxiety / Worry", "Regret / Disappointment", "Sadness"],
+  annotator_04: ["Embarrassment / Awkwardness", "Sadness", "Regret / Disappointment", "Despair", "Exhaustion"],
+  annotator_05: ["Regret / Disappointment", "Doubt / Distrust", "Respect", "Sorrow", "Sadness"]
 },
 
 line_15: {
-  annotator_01: ["아껴주는", "서러움", "슬픔", "힘듦/지침", "깨달음", "불쌍함/연민"],
-  annotator_02: ["고마움", "죄책감", "존경", "감동/감탄", "환영/호의", "깨달음", "불쌍함/연민", "비장함", "아껴주는", "슬픔"],
-  annotator_03: ["불안/걱정", "아껴주는", "존경"],
-  annotator_04: ["불쌍함/연민", "슬픔", "서러움", "힘듦/지침", "안타까움/실망"],
-  annotator_05: ["감동/감탄", "고마움", "깨달음", "존경"]
+  annotator_01: ["Affection", "Sorrow", "Sadness", "Exhaustion", "Realization", "Pity / Compassion"],
+  annotator_02: ["Gratitude", "Guilt", "Respect", "Being moved / Admiration", "Welcome / Favor", "Realization", "Pity / Compassion", "Solemn resolve", "Affection", "Sadness"],
+  annotator_03: ["Anxiety / Worry", "Affection", "Respect"],
+  annotator_04: ["Pity / Compassion", "Sadness", "Sorrow", "Exhaustion", "Regret / Disappointment"],
+  annotator_05: ["Being moved / Admiration", "Gratitude", "Realization", "Respect"]
 },
 
 line_16: {
-  annotator_01: ["존경", "감동/감탄", "안심/신뢰", "기대감", "놀람", "불쌍함/연민", "비장함", "뿌듯함"],
-  annotator_02: ["존경", "감동/감탄", "놀람", "기대감", "뿌듯함", "비장함", "신기함/관심", "아껴주는", "안심/신뢰", "슬픔"],
-  annotator_03: ["불쌍함/연민", "비장함", "아껴주는", "안심/신뢰", "존경"],
-  annotator_04: ["감동/감탄", "비장함", "안심/신뢰", "아껴주는", "존경"],
-  annotator_05: ["뿌듯함", "존경", "감동/감탄", "안심/신뢰", "기쁨"]
+  annotator_01: ["Respect", "Being moved / Admiration", "Relief / Trust", "Anticipation", "Surprise", "Pity / Compassion", "Solemn resolve", "Pride"],
+  annotator_02: ["Respect", "Being moved / Admiration", "Surprise", "Anticipation", "Pride", "Solemn resolve", "Wonder / Interest", "Affection", "Relief / Trust", "Sadness"],
+  annotator_03: ["Pity / Compassion", "Solemn resolve", "Affection", "Relief / Trust", "Respect"],
+  annotator_04: ["Being moved / Admiration", "Solemn resolve", "Relief / Trust", "Affection", "Respect"],
+  annotator_05: ["Pride", "Respect", "Being moved / Admiration", "Relief / Trust", "Joy"]
 },
 
 line_17: {
-  annotator_01: ["안타까움/실망", "죄책감", "당황/난처", "부끄러움", "불안/걱정", "힘듦/지침", "패배/자기혐오"],
-  annotator_02: ["당황/난처", "부끄러움", "안타까움/실망", "패배/자기혐오"],
-  annotator_03: ["당황/난처", "놀람", "부담/안_내킴", "불쌍함/연민", "안타까움/실망"],
-  annotator_04: ["당황/난처", "부담/안_내킴", "불안/걱정", "불평/불만"],
-  annotator_05: ["불쌍함/연민", "아껴주는", "안타까움/실망"]
+  annotator_01: ["Regret / Disappointment", "Guilt", "Embarrassment / Awkwardness", "Shame", "Anxiety / Worry", "Exhaustion", "Defeat / Self-loathing"],
+  annotator_02: ["Embarrassment / Awkwardness", "Shame", "Regret / Disappointment", "Defeat / Self-loathing"],
+  annotator_03: ["Embarrassment / Awkwardness", "Surprise", "Reluctance / Burden", "Pity / Compassion", "Regret / Disappointment"],
+  annotator_04: ["Embarrassment / Awkwardness", "Reluctance / Burden", "Anxiety / Worry", "Complaint / Dissatisfaction"],
+  annotator_05: ["Pity / Compassion", "Affection", "Regret / Disappointment"]
 },
 
 line_18: {
-  annotator_01: ["신기함/관심", "안타까움/실망", "서러움", "의심/불신", "화남/분노", "슬픔"],
-  annotator_02: ["공포/무서움", "놀람", "불안/걱정", "서러움", "안타까움/실망"],
-  annotator_03: ["부담/안_내킴", "서러움", "안타까움/실망", "놀람", "당황/난처"],
-  annotator_04: ["경악", "불안/걱정", "부담/안_내킴", "슬픔", "안타까움/실망", "힘듦/지침"],
-  annotator_05: ["불평/불만", "서러움", "슬픔", "안타까움/실망", "절망"]
+  annotator_01: ["Wonder / Interest", "Regret / Disappointment", "Sorrow", "Doubt / Distrust", "Anger / Rage", "Sadness"],
+  annotator_02: ["Fear", "Surprise", "Anxiety / Worry", "Sorrow", "Regret / Disappointment"],
+  annotator_03: ["Reluctance / Burden", "Sorrow", "Regret / Disappointment", "Surprise", "Embarrassment / Awkwardness"],
+  annotator_04: ["Shock", "Anxiety / Worry", "Reluctance / Burden", "Sadness", "Regret / Disappointment", "Exhaustion"],
+  annotator_05: ["Complaint / Dissatisfaction", "Sorrow", "Sadness", "Regret / Disappointment", "Despair"]
 },
 
 line_19: {
-  annotator_01: ["아껴주는", "존경", "고마움", "깨달음", "신기함/관심", "안심/신뢰", "불쌍함/연민"],
-  annotator_02: ["고마움", "감동/감탄", "존경", "아껴주는", "안심/신뢰", "불쌍함/연민", "슬픔", "기쁨"],
-  annotator_03: ["아껴주는", "존경", "당황/난처", "불쌍함/연민"],
-  annotator_04: ["불쌍함/연민", "불안/걱정", "안타까움/실망", "슬픔"],
-  annotator_05: ["존경", "감동/감탄", "고마움", "뿌듯함", "기쁨"]
+  annotator_01: ["Affection", "Respect", "Gratitude", "Realization", "Wonder / Interest", "Relief / Trust", "Pity / Compassion"],
+  annotator_02: ["Gratitude", "Being moved / Admiration", "Respect", "Affection", "Relief / Trust", "Pity / Compassion", "Sadness", "Joy"],
+  annotator_03: ["Affection", "Respect", "Embarrassment / Awkwardness", "Pity / Compassion"],
+  annotator_04: ["Pity / Compassion", "Anxiety / Worry", "Regret / Disappointment", "Sadness"],
+  annotator_05: ["Respect", "Being moved / Admiration", "Gratitude", "Pride", "Joy"]
 },
 
 line_20: {
-  annotator_01: ["아껴주는", "기대감", "즐거움/신남"],
-  annotator_02: ["아껴주는", "기대감", "안심/신뢰"],
-  annotator_03: ["아껴주는", "안심/신뢰", "존경"],
-  annotator_04: ["비장함", "아껴주는", "기대감"],
-  annotator_05: ["비장함", "기대감"]
+  annotator_01: ["Affection", "Anticipation", "Enjoyment / Excitement"],
+  annotator_02: ["Affection", "Anticipation", "Relief / Trust"],
+  annotator_03: ["Affection", "Relief / Trust", "Respect"],
+  annotator_04: ["Solemn resolve", "Affection", "Anticipation"],
+  annotator_05: ["Solemn resolve", "Anticipation"]
 },
 
 line_21: {
-  annotator_01: ["기대감", "존경", "아껴주는", "환영/호의"],
-  annotator_02: ["존경", "환영/호의", "흐뭇함(귀여움/예쁨)", "안심/신뢰", "아껴주는", "신기함/관심", "기대감", "기쁨", "뿌듯함"],
-  annotator_03: ["기대감", "뿌듯함", "즐거움/신남"],
-  annotator_04: ["비장함", "안심/신뢰", "감동/감탄", "존경"],
-  annotator_05: ["존경", "감동/감탄", "기대감", "뿌듯함"]
+  annotator_01: ["Anticipation", "Respect", "Affection", "Welcome / Favor"],
+  annotator_02: ["Respect", "Welcome / Favor", "Delight (Cuteness / Beauty)", "Relief / Trust", "Affection", "Wonder / Interest", "Anticipation", "Joy", "Pride"],
+  annotator_03: ["Anticipation", "Pride", "Enjoyment / Excitement"],
+  annotator_04: ["Solemn resolve", "Relief / Trust", "Being moved / Admiration", "Respect"],
+  annotator_05: ["Respect", "Being moved / Admiration", "Anticipation", "Pride"]
 },
 
 line_22: {
-  annotator_01: ["한심함", "불안/걱정", "서러움", "안타까움/실망", "당황/난처", "절망", "공포/무서움"],
-  annotator_02: ["비장함", "서러움", "슬픔", "안타까움/실망", "불안/걱정", "힘듦/지침"],
-  annotator_03: ["깨달음", "놀람", "당황/난처", "부담/안_내킴", "불쌍함/연민", "불안/걱정", "불평/불만", "슬픔", "서러움", "힘듦/지침", "절망", "패배/자기혐오"],
-  annotator_04: ["부담/안_내킴", "불평/불만", "절망", "짜증"],
-  annotator_05: ["당황/난처", "놀람", "불쌍함/연민", "슬픔", "안타까움/실망"]
+  annotator_01: ["Contempt", "Anxiety / Worry", "Sorrow", "Regret / Disappointment", "Embarrassment / Awkwardness", "Despair", "Fear"],
+  annotator_02: ["Solemn resolve", "Sorrow", "Sadness", "Regret / Disappointment", "Anxiety / Worry", "Exhaustion"],
+  annotator_03: ["Realization", "Surprise", "Embarrassment / Awkwardness", "Reluctance / Burden", "Pity / Compassion", "Anxiety / Worry", "Complaint / Dissatisfaction", "Sadness", "Sorrow", "Exhaustion", "Despair", "Defeat / Self-loathing"],
+  annotator_04: ["Reluctance / Burden", "Complaint / Dissatisfaction", "Despair", "Irritation"],
+  annotator_05: ["Embarrassment / Awkwardness", "Surprise", "Pity / Compassion", "Sadness", "Regret / Disappointment"]
 },
 
 line_23: {
-  annotator_01: ["힘듦/지침", "우쭐댐/무시함", "한심함"],
-  annotator_02: ["불쌍함/연민", "불안/걱정", "서러움", "슬픔", "아껴주는", "힘듦/지침"],
-  annotator_03: ["불쌍함/연민", "힘듦/지침", "안타까움/실망"],
-  annotator_04: ["불쌍함/연민", "안타까움/실망", "슬픔", "힘듦/지침"],
-  annotator_05: ["흐뭇함(귀여움/예쁨)", "아껴주는"]
+  annotator_01: ["Exhaustion", "Conceit / Disdain", "Contempt"],
+  annotator_02: ["Pity / Compassion", "Anxiety / Worry", "Sorrow", "Sadness", "Affection", "Exhaustion"],
+  annotator_03: ["Pity / Compassion", "Exhaustion", "Regret / Disappointment"],
+  annotator_04: ["Pity / Compassion", "Regret / Disappointment", "Sadness", "Exhaustion"],
+  annotator_05: ["Delight (Cuteness / Beauty)", "Affection"]
 },
 
 line_24: {
-  annotator_01: ["아껴주는", "환영/호의", "깨달음", "불안/걱정", "서러움"],
-  annotator_02: ["아껴주는", "안심/신뢰", "불쌍함/연민", "흐뭇함(귀여움/예쁨)"],
-  annotator_03: ["불쌍함/연민", "불안/걱정", "비장함", "아껴주는", "안심/신뢰"],
-  annotator_04: ["슬픔", "아껴주는", "안심/신뢰", "비장함"],
-  annotator_05: ["아껴주는", "안심/신뢰"]
+  annotator_01: ["Affection", "Welcome / Favor", "Realization", "Anxiety / Worry", "Sorrow"],
+  annotator_02: ["Affection", "Relief / Trust", "Pity / Compassion", "Delight (Cuteness / Beauty)"],
+  annotator_03: ["Pity / Compassion", "Anxiety / Worry", "Solemn resolve", "Affection", "Relief / Trust"],
+  annotator_04: ["Sadness", "Affection", "Relief / Trust", "Solemn resolve"],
+  annotator_05: ["Affection", "Relief / Trust"]
 },
 
 line_25: {
-  annotator_01: ["불안/걱정", "비장함", "뿌듯함", "아껴주는", "환영/호의"],
-  annotator_02: ["고마움", "뿌듯함", "기쁨", "아껴주는", "안심/신뢰", "즐거움/신남", "존경", "환영/호의", "흐뭇함(귀여움/예쁨)"],
-  annotator_03: ["기대감", "뿌듯함", "비장함"],
-  annotator_04: ["감동/감탄", "기쁨", "뿌듯함", "비장함", "안심/신뢰", "아껴주는"],
-  annotator_05: ["비장함", "뿌듯함", "존경"]
+  annotator_01: ["Anxiety / Worry", "Solemn resolve", "Pride", "Affection", "Welcome / Favor"],
+  annotator_02: ["Gratitude", "Pride", "Joy", "Affection", "Relief / Trust", "Enjoyment / Excitement", "Respect", "Welcome / Favor", "Delight (Cuteness / Beauty)"],
+  annotator_03: ["Anticipation", "Pride", "Solemn resolve"],
+  annotator_04: ["Being moved / Admiration", "Joy", "Pride", "Solemn resolve", "Relief / Trust", "Affection"],
+  annotator_05: ["Solemn resolve", "Pride", "Respect"]
 },
 
 line_26: {
-  annotator_01: ["뿌듯함", "아껴주는", "즐거움/신남", "우쭐댐/무시함", "기쁨"],
-  annotator_02: ["기대감", "깨달음", "비장함", "뿌듯함", "아껴주는", "안심/신뢰"],
-  annotator_03: ["부담/안_내킴", "불쌍함/연민", "불안/걱정", "안타까움/실망", "아껴주는"],
-  annotator_04: ["아껴주는", "안타까움/실망", "불쌍함/연민", "슬픔"],
-  annotator_05: ["불평/불만", "깨달음", "의심/불신", "당황/난처"]
+  annotator_01: ["Pride", "Affection", "Enjoyment / Excitement", "Conceit / Disdain", "Joy"],
+  annotator_02: ["Anticipation", "Realization", "Solemn resolve", "Pride", "Affection", "Relief / Trust"],
+  annotator_03: ["Reluctance / Burden", "Pity / Compassion", "Anxiety / Worry", "Regret / Disappointment", "Affection"],
+  annotator_04: ["Affection", "Regret / Disappointment", "Pity / Compassion", "Sadness"],
+  annotator_05: ["Complaint / Dissatisfaction", "Realization", "Doubt / Distrust", "Embarrassment / Awkwardness"]
 },
 
 line_27: {
-  annotator_01: ["아껴주는", "환영/호의"],
-  annotator_02: ["신기함/관심", "아껴주는", "안심/신뢰"],
-  annotator_03: ["기대감", "기쁨", "환영/호의"],
-  annotator_04: ["신기함/관심", "즐거움/신남", "행복", "환영/호의"],
-  annotator_05: ["신기함/관심"]
+  annotator_01: ["Affection", "Welcome / Favor"],
+  annotator_02: ["Wonder / Interest", "Affection", "Relief / Trust"],
+  annotator_03: ["Anticipation", "Joy", "Welcome / Favor"],
+  annotator_04: ["Wonder / Interest", "Enjoyment / Excitement", "Happiness", "Welcome / Favor"],
+  annotator_05: ["Wonder / Interest"]
 },
 
 line_28: {
-  annotator_01: ["아껴주는", "불쌍함/연민", "고마움", "감동/감탄", "슬픔", "서러움", "뿌듯함", "기대감", "기쁨", "깨달음"],
-  annotator_02: ["고마움", "기쁨", "놀람", "불쌍함/연민", "불안/걱정", "슬픔", "아껴주는", "안타까움/실망", "안심/신뢰", "환영/호의"],
-  annotator_03: ["기대감", "기쁨", "고마움", "불쌍함/연민", "불안/걱정", "안타까움/실망", "아껴주는"],
-  annotator_04: ["감동/감탄", "기쁨", "슬픔", "환영/호의", "행복"],
-  annotator_05: ["서러움", "슬픔", "고마움", "기대감"]
+  annotator_01: ["Affection", "Pity / Compassion", "Gratitude", "Being moved / Admiration", "Sadness", "Sorrow", "Pride", "Anticipation", "Joy", "Realization"],
+  annotator_02: ["Gratitude", "Joy", "Surprise", "Pity / Compassion", "Anxiety / Worry", "Sadness", "Affection", "Regret / Disappointment", "Relief / Trust", "Welcome / Favor"],
+  annotator_03: ["Anticipation", "Joy", "Gratitude", "Pity / Compassion", "Anxiety / Worry", "Regret / Disappointment", "Affection"],
+  annotator_04: ["Being moved / Admiration", "Joy", "Sadness", "Welcome / Favor", "Happiness"],
+  annotator_05: ["Sorrow", "Sadness", "Gratitude", "Anticipation"]
 },
 
 line_29: {
-  annotator_01: ["아껴주는", "존경", "고마움", "깨달음", "흐뭇함(귀여움/예쁨)", "뿌듯함", "비장함", "불쌍함/연민"],
-  annotator_02: ["아껴주는", "안심/신뢰", "존경", "서러움", "슬픔", "비장함", "감동/감탄", "고마움", "환영/호의", "뿌듯함"],
-  annotator_03: ["기대감", "기쁨", "뿌듯함", "신기함/관심", "아껴주는"],
-  annotator_04: ["기쁨", "아껴주는", "안심/신뢰", "존경", "즐거움/신남"],
-  annotator_05: ["감동/감탄", "아껴주는", "존경", "흐뭇함(귀여움/예쁨)"]
+  annotator_01: ["Affection", "Respect", "Gratitude", "Realization", "Delight (Cuteness / Beauty)", "Pride", "Solemn resolve", "Pity / Compassion"],
+  annotator_02: ["Affection", "Relief / Trust", "Respect", "Sorrow", "Sadness", "Solemn resolve", "Being moved / Admiration", "Gratitude", "Welcome / Favor", "Pride"],
+  annotator_03: ["Anticipation", "Joy", "Pride", "Wonder / Interest", "Affection"],
+  annotator_04: ["Joy", "Affection", "Relief / Trust", "Respect", "Enjoyment / Excitement"],
+  annotator_05: ["Being moved / Admiration", "Affection", "Respect", "Delight (Cuteness / Beauty)"]
 },
 
 line_30: {
-  annotator_01: ["아껴주는", "존경", "뿌듯함", "환영/호의"],
-  annotator_02: ["존경", "흐뭇함(귀여움/예쁨)", "안심/신뢰", "비장함", "아껴주는", "감동/감탄"],
-  annotator_03: ["기대감", "기쁨", "감동/감탄", "뿌듯함"],
-  annotator_04: ["감동/감탄", "기대감", "환영/호의", "아껴주는", "안심/신뢰"],
-  annotator_05: ["존경", "감동/감탄", "아껴주는"]
+  annotator_01: ["Affection", "Respect", "Pride", "Welcome / Favor"],
+  annotator_02: ["Respect", "Delight (Cuteness / Beauty)", "Relief / Trust", "Solemn resolve", "Affection", "Being moved / Admiration"],
+  annotator_03: ["Anticipation", "Joy", "Being moved / Admiration", "Pride"],
+  annotator_04: ["Being moved / Admiration", "Anticipation", "Welcome / Favor", "Affection", "Relief / Trust"],
+  annotator_05: ["Respect", "Being moved / Admiration", "Affection"]
 },
 
 line_31: {
-  annotator_01: ["안타까움/실망", "슬픔", "안심/신뢰"],
-  annotator_02: ["안타까움/실망", "기대감", "불안/걱정", "비장함", "서러움", "슬픔", "안심/신뢰"],
-  annotator_03: ["당황/난처", "부담/안_내킴", "불안/걱정"],
-  annotator_04: ["깨달음", "비장함", "절망", "슬픔"],
-  annotator_05: ["깨달음", "존경"]
+  annotator_01: ["Regret / Disappointment", "Sadness", "Relief / Trust"],
+  annotator_02: ["Regret / Disappointment", "Anticipation", "Anxiety / Worry", "Solemn resolve", "Sorrow", "Sadness", "Relief / Trust"],
+  annotator_03: ["Embarrassment / Awkwardness", "Reluctance / Burden", "Anxiety / Worry"],
+  annotator_04: ["Realization", "Solemn resolve", "Despair", "Sadness"],
+  annotator_05: ["Realization", "Respect"]
 },
 
 line_32: {
-  annotator_01: ["흐뭇함(귀여움/예쁨)", "아껴주는", "안심/신뢰", "기대감", "환영/호의", "깨달음", "슬픔", "안타까움/실망", "고마움"],
-  annotator_02: ["흐뭇함(귀여움/예쁨)", "기쁨", "고마움", "뿌듯함", "안타까움/실망", "슬픔", "존경", "행복", "기대감"],
-  annotator_03: ["기대감", "기쁨", "아껴주는", "안심/신뢰", "존경"],
-  annotator_04: ["기쁨", "슬픔", "아껴주는", "안심/신뢰", "환영/호의", "흐뭇함(귀여움/예쁨)"],
-  annotator_05: ["고마움", "아껴주는", "안타까움/실망", "불쌍함/연민"]
+  annotator_01: ["Delight (Cuteness / Beauty)", "Affection", "Relief / Trust", "Anticipation", "Welcome / Favor", "Realization", "Sadness", "Regret / Disappointment", "Gratitude"],
+  annotator_02: ["Delight (Cuteness / Beauty)", "Joy", "Gratitude", "Pride", "Regret / Disappointment", "Sadness", "Respect", "Happiness", "Anticipation"],
+  annotator_03: ["Anticipation", "Joy", "Affection", "Relief / Trust", "Respect"],
+  annotator_04: ["Joy", "Sadness", "Affection", "Relief / Trust", "Welcome / Favor", "Delight (Cuteness / Beauty)"],
+  annotator_05: ["Gratitude", "Affection", "Regret / Disappointment", "Pity / Compassion"]
 },
 
 line_33: {
-  annotator_01: ["아껴주는", "행복", "뿌듯함", "고마움", "감동/감탄", "기쁨"],
-  annotator_02: ["감동/감탄", "고마움", "기쁨", "뿌듯함", "아껴주는", "안심/신뢰", "존경", "편안/쾌적", "행복", "환영/호의"],
-  annotator_03: ["고마움", "기대감", "기쁨", "안심/신뢰"],
-  annotator_04: ["불쌍함/연민", "서러움", "슬픔", "안타까움/실망", "힘듦/지침"],
-  annotator_05: ["기쁨", "편안/쾌적", "행복", "감동/감탄", "고마움"]
+  annotator_01: ["Affection", "Happiness", "Pride", "Gratitude", "Being moved / Admiration", "Joy"],
+  annotator_02: ["Being moved / Admiration", "Gratitude", "Joy", "Pride", "Affection", "Relief / Trust", "Respect", "Comfort / Ease", "Happiness", "Welcome / Favor"],
+  annotator_03: ["Gratitude", "Anticipation", "Joy", "Relief / Trust"],
+  annotator_04: ["Pity / Compassion", "Sorrow", "Sadness", "Regret / Disappointment", "Exhaustion"],
+  annotator_05: ["Joy", "Comfort / Ease", "Happiness", "Being moved / Admiration", "Gratitude"]
 },
 
 line_34: {
-  annotator_01: ["아껴주는", "슬픔", "불안/걱정"],
-  annotator_02: ["기대감", "슬픔", "아껴주는", "불안/걱정", "부담/안_내킴", "죄책감", "환영/호의"],
-  annotator_03: ["놀람", "당황/난처", "불안/걱정", "안타까움/실망"],
-  annotator_04: ["서러움", "슬픔", "절망", "힘듦/지침"],
-  annotator_05: ["고마움", "감동/감탄", "기대감", "안심/신뢰"]
+  annotator_01: ["Affection", "Sadness", "Anxiety / Worry"],
+  annotator_02: ["Anticipation", "Sadness", "Affection", "Anxiety / Worry", "Reluctance / Burden", "Guilt", "Welcome / Favor"],
+  annotator_03: ["Surprise", "Embarrassment / Awkwardness", "Anxiety / Worry", "Regret / Disappointment"],
+  annotator_04: ["Sorrow", "Sadness", "Despair", "Exhaustion"],
+  annotator_05: ["Gratitude", "Being moved / Admiration", "Anticipation", "Relief / Trust"]
 },
 
 line_35: {
-  annotator_01: ["당황/난처", "부담/안_내킴", "힘듦/지침", "화남/분노", "절망", "서러움", "슬픔"],
-  annotator_02: ["비장함", "서러움", "안심/신뢰", "아껴주는", "존경", "슬픔", "깨달음", "불쌍함/연민"],
-  annotator_03: ["불쌍함/연민", "부담/안_내킴", "안타까움/실망"],
-  annotator_04: ["비장함", "서러움", "슬픔", "절망"],
-  annotator_05: ["서러움", "슬픔", "안타까움/실망"]
+  annotator_01: ["Embarrassment / Awkwardness", "Reluctance / Burden", "Exhaustion", "Anger / Rage", "Despair", "Sorrow", "Sadness"],
+  annotator_02: ["Solemn resolve", "Sorrow", "Relief / Trust", "Affection", "Respect", "Sadness", "Realization", "Pity / Compassion"],
+  annotator_03: ["Pity / Compassion", "Reluctance / Burden", "Regret / Disappointment"],
+  annotator_04: ["Solemn resolve", "Sorrow", "Sadness", "Despair"],
+  annotator_05: ["Sorrow", "Sadness", "Regret / Disappointment"]
 },
 
 line_36: {
-  annotator_01: ["비장함", "깨달음"],
-  annotator_02: ["비장함", "안심/신뢰", "서러움", "슬픔", "뿌듯함", "우쭐댐/무시함"],
-  annotator_03: ["비장함", "안타까움/실망"],
-  annotator_04: ["비장함", "재미없음", "없음"],
-  annotator_05: ["안심/신뢰", "비장함", "재미없음"]
+  annotator_01: ["Solemn resolve", "Realization"],
+  annotator_02: ["Solemn resolve", "Relief / Trust", "Sorrow", "Sadness", "Pride", "Conceit / Disdain"],
+  annotator_03: ["Solemn resolve", "Regret / Disappointment"],
+  annotator_04: ["Solemn resolve", "재미None", "None"],
+  annotator_05: ["Relief / Trust", "Solemn resolve", "재미None"]
 },
 
 line_37: {
-  annotator_01: ["고마움", "아껴주는", "존경", "서러움", "슬픔", "깨달음", "비장함", "힘듦/지침", "부담/안_내킴", "불쌍함/연민"],
-  annotator_02: ["고마움", "존경", "감동/감탄", "불쌍함/연민", "서러움", "슬픔", "아껴주는", "안타까움/실망", "기쁨"],
-  annotator_03: ["고마움", "불쌍함/연민", "불안/걱정", "서러움", "아껴주는", "안타까움/실망"],
-  annotator_04: ["절망", "힘듦/지침", "불쌍함/연민", "안타까움/실망"],
-  annotator_05: ["고마움", "존경", "불쌍함/연민", "안타까움/실망"]
+  annotator_01: ["Gratitude", "Affection", "Respect", "Sorrow", "Sadness", "Realization", "Solemn resolve", "Exhaustion", "Reluctance / Burden", "Pity / Compassion"],
+  annotator_02: ["Gratitude", "Respect", "Being moved / Admiration", "Pity / Compassion", "Sorrow", "Sadness", "Affection", "Regret / Disappointment", "Joy"],
+  annotator_03: ["Gratitude", "Pity / Compassion", "Anxiety / Worry", "Sorrow", "Affection", "Regret / Disappointment"],
+  annotator_04: ["Despair", "Exhaustion", "Pity / Compassion", "Regret / Disappointment"],
+  annotator_05: ["Gratitude", "Respect", "Pity / Compassion", "Regret / Disappointment"]
 },
 
 line_38: {
-  annotator_01: ["아껴주는", "안심/신뢰", "비장함"],
-  annotator_02: ["아껴주는", "안심/신뢰", "뿌듯함", "환영/호의", "기쁨", "비장함"],
-  annotator_03: ["기대감", "아껴주는", "환영/호의"],
-  annotator_04: ["뿌듯함", "아껴주는"],
-  annotator_05: ["비장함", "고마움", "기대감", "뿌듯함", "안심/신뢰"]
+  annotator_01: ["Affection", "Relief / Trust", "Solemn resolve"],
+  annotator_02: ["Affection", "Relief / Trust", "Pride", "Welcome / Favor", "Joy", "Solemn resolve"],
+  annotator_03: ["Anticipation", "Affection", "Welcome / Favor"],
+  annotator_04: ["Pride", "Affection"],
+  annotator_05: ["Solemn resolve", "Gratitude", "Anticipation", "Pride", "Relief / Trust"]
 },
 
 line_39: {
-  annotator_01: ["아껴주는", "비장함", "서러움", "화남/분노", "기대감", "깨달음", "불평/불만"],
-  annotator_02: ["비장함", "기대감", "고마움", "깨달음", "뿌듯함", "아껴주는", "서러움", "화남/분노", "존경"],
-  annotator_03: ["비장함"],
-  annotator_04: ["서러움", "슬픔", "화남/분노", "힘듦/지침"],
-  annotator_05: ["비장함", "불안/걱정", "아껴주는", "안심/신뢰", "기대감"]
+  annotator_01: ["Affection", "Solemn resolve", "Sorrow", "Anger / Rage", "Anticipation", "Realization", "Complaint / Dissatisfaction"],
+  annotator_02: ["Solemn resolve", "Anticipation", "Gratitude", "Realization", "Pride", "Affection", "Sorrow", "Anger / Rage", "Respect"],
+  annotator_03: ["Solemn resolve"],
+  annotator_04: ["Sorrow", "Sadness", "Anger / Rage", "Exhaustion"],
+  annotator_05: ["Solemn resolve", "Anxiety / Worry", "Affection", "Relief / Trust", "Anticipation"]
 },
 
 line_40: {
-  annotator_01: ["아껴주는", "불쌍함/연민", "흐뭇함(귀여움/예쁨)", "뿌듯함", "기대감", "환영/호의"],
-  annotator_02: ["불쌍함/연민", "서러움", "슬픔", "아껴주는", "흐뭇함(귀여움/예쁨)", "기쁨", "행복", "기대감"],
-  annotator_03: ["기대감", "기쁨", "아껴주는", "존경"],
-  annotator_04: ["불쌍함/연민", "슬픔", "신기함/관심"],
-  annotator_05: ["아껴주는", "흐뭇함(귀여움/예쁨)"]
+  annotator_01: ["Affection", "Pity / Compassion", "Delight (Cuteness / Beauty)", "Pride", "Anticipation", "Welcome / Favor"],
+  annotator_02: ["Pity / Compassion", "Sorrow", "Sadness", "Affection", "Delight (Cuteness / Beauty)", "Joy", "Happiness", "Anticipation"],
+  annotator_03: ["Anticipation", "Joy", "Affection", "Respect"],
+  annotator_04: ["Pity / Compassion", "Sadness", "Wonder / Interest"],
+  annotator_05: ["Affection", "Delight (Cuteness / Beauty)"]
 },
 
 line_41: {
-  annotator_01: ["아껴주는", "불쌍함/연민", "흐뭇함(귀여움/예쁨)", "행복", "기쁨", "신기함/관심"],
-  annotator_02: ["아껴주는", "존경", "고마움", "감동/감탄", "기대감", "뿌듯함", "비장함", "안심/신뢰", "환영/호의", "슬픔"],
-  annotator_03: ["기대감", "신기함/관심", "아껴주는", "안심/신뢰", "편안/쾌적"],
-  annotator_04: ["기쁨", "편안/쾌적", "행복", "흐뭇함(귀여움/예쁨)"],
-  annotator_05: ["불쌍함/연민", "불안/걱정", "신기함/관심", "안타까움/실망"]
+  annotator_01: ["Affection", "Pity / Compassion", "Delight (Cuteness / Beauty)", "Happiness", "Joy", "Wonder / Interest"],
+  annotator_02: ["Affection", "Respect", "Gratitude", "Being moved / Admiration", "Anticipation", "Pride", "Solemn resolve", "Relief / Trust", "Welcome / Favor", "Sadness"],
+  annotator_03: ["Anticipation", "Wonder / Interest", "Affection", "Relief / Trust", "Comfort / Ease"],
+  annotator_04: ["Joy", "Comfort / Ease", "Happiness", "Delight (Cuteness / Beauty)"],
+  annotator_05: ["Pity / Compassion", "Anxiety / Worry", "Wonder / Interest", "Regret / Disappointment"]
 },
 
 line_42: {
-  annotator_01: ["아껴주는", "불안/걱정", "불쌍함/연민", "흐뭇함(귀여움/예쁨)", "신기함/관심"],
-  annotator_02: ["흐뭇함(귀여움/예쁨)", "힘듦/지침", "서러움", "아껴주는", "신기함/관심"],
-  annotator_03: ["놀람", "당황/난처", "부담/안_내킴", "불안/걱정", "불평/불만", "슬픔"],
-  annotator_04: ["아껴주는", "행복", "편안/쾌적", "흐뭇함(귀여움/예쁨)"],
-  annotator_05: ["불안/걱정"]
+  annotator_01: ["Affection", "Anxiety / Worry", "Pity / Compassion", "Delight (Cuteness / Beauty)", "Wonder / Interest"],
+  annotator_02: ["Delight (Cuteness / Beauty)", "Exhaustion", "Sorrow", "Affection", "Wonder / Interest"],
+  annotator_03: ["Surprise", "Embarrassment / Awkwardness", "Reluctance / Burden", "Anxiety / Worry", "Complaint / Dissatisfaction", "Sadness"],
+  annotator_04: ["Affection", "Happiness", "Comfort / Ease", "Delight (Cuteness / Beauty)"],
+  annotator_05: ["Anxiety / Worry"]
 },
 
 line_43: {
-  annotator_01: ["아껴주는", "신기함/관심", "흐뭇함(귀여움/예쁨)"],
-  annotator_02: ["기대감", "아껴주는", "서러움", "불안/걱정"],
-  annotator_03: ["없음"],
-  annotator_04: ["아껴주는", "환영/호의", "흐뭇함(귀여움/예쁨)"],
-  annotator_05: ["아껴주는", "흐뭇함(귀여움/예쁨)"]
+  annotator_01: ["Affection", "Wonder / Interest", "Delight (Cuteness / Beauty)"],
+  annotator_02: ["Anticipation", "Affection", "Sorrow", "Anxiety / Worry"],
+  annotator_03: ["None"],
+  annotator_04: ["Affection", "Welcome / Favor", "Delight (Cuteness / Beauty)"],
+  annotator_05: ["Affection", "Delight (Cuteness / Beauty)"]
 }
 
 
@@ -534,7 +550,7 @@ line_43: {
         tagContainer.appendChild(annotatorDiv);
       }
     } else {
-      tagContainer.textContent = "태그 정보가 없습니다.";
+      tagContainer.textContent = "No emotion-tag data is available.";
     }
   }
 
@@ -547,5 +563,6 @@ line_43: {
 
 </script>
 
+<script src="../js/bilingual-poems.js"></script>
 </body>
 </html>
